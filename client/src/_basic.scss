@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+
+//Variables
+
+$primary: #D81F84;
+$accent: #17282F;
+$black: #35363A;
+
+$font-regular: 200;
+$font-semibold: 400;
+$font-bold: 700;
+
+$mobile: 600px;
+$tablet-min: 700px;
+$tablet-max: 900px;
+$screen: 1000px;
+
+$border-radius: 8px;
+
+$sidebar: 270px;
+$sidebar-tablet: 100px;
+$mobile-navbar: 96px;
+
+//Media Queries
+
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $mobile) and (max-width: $tablet-max) {
+        @content;
+    }
+}
+
+@mixin screen {
+    @media (max-width: #{$screen}) {
+        @content;
+    }
+}
+
+// html, body, p, a{
+//     font-family: "Inter", sans-serif;
+//     font-optical-sizing: auto;
+//     font-weight: $font-regular;
+//     color: #000;
+// }
+
+a {
+    color: #fff !important;
+}
+
+.container {
+    width: 80% !important;
+    margin: 0 auto;
+
+    @include mobile {
+        width: 90%;
+    }
+}
+
+.btn-primary {
+    padding-block: 0.6rem;
+    padding-inline: 0.7rem;
+    background-color: $primary;
+    color: #fff;
+    border-radius: $border-radius;
+    border: none;
+    box-sizing: content-box;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.btn-primary :hover {
+    color: $primary;
+    font-weight: 500;
+    background-color: #fff;
+    border: 1px solid $primary;
+    box-sizing: content-box;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-secondary {
+    padding-block: 0.6rem;
+    padding-inline: 0.7rem;
+    background-color: white;
+    color: $primary;
+    border-radius: $border-radius;
+    border: 1px solid $primary;
+    box-sizing: content-box;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.btn-outline {
+    padding-block: 0.6rem;
+    padding-inline: 0.7rem;
+    background-color: transparent;
+    color: white;
+    border-radius: $border-radius;
+    border: 1px solid white;
+    box-sizing: content-box;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.hero-button {
+    padding-block: 0.6rem;
+    padding-inline: 0.7rem;
+    background: transparent;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    background-color: #D81F84;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    box-sizing: content-box;
+}
+
+.hero-button:hover {
+    padding-block: 0.6rem;
+    padding-inline: 0.7rem;
+    background: transparent;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    border-color: #D81F84;
+    color: black;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 500;
+    text-align: center;
+}
+
+.delete-button {
+    padding-block: 0.6rem;
+    padding-inline: 0.7rem;
+    background: transparent;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    background-color: #DC0000;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    box-sizing: content-box;
+    text-transform: uppercase;
+}
+
+ul {
+    list-style: none;
+}
+
+label {
+    text-transform: none;
+    letter-spacing: 0;
+}

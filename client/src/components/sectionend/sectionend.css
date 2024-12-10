@@ -1,0 +1,15 @@
+.line{
+    width: 200px;
+    height: 1px;
+    background: #BFBFBF;
+}
+.cross{
+    
+    color: #BFBFBF;
+}
+.section-end{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:130px 0px;
+}

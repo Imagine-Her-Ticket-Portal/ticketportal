@@ -1,0 +1,225 @@
+.req-status {
+
+    height: 51.27px;
+
+    border-radius: 14.649px;
+    background: #F8F8F8;
+    padding: 0px 20px;
+    justify-content: space-between;
+
+}
+
+.admin_section{
+    padding-top: 10vh !important;
+}
+
+.admin-section{
+    padding-top: 5vh !important;
+    margin: 0px 120px 120px 120px;
+}
+
+.pending,
+.inreview,
+.resolved {
+
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 11.719px;
+    margin: 7px;
+    color: #000;
+    font-family: 'Inter';
+    font-size: 16.114px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.pending:hover,
+.inreview:hover,
+.resolved:hover,
+.status {
+    border: 0.366px solid #DFDFDF;
+    background: #FFF;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+/*tabs container*/
+.tabs-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 2.5rem 0;
+}
+
+.display-tickets-tabs-container {
+    display: flex;
+    justify-content: start;
+    margin: 2.5rem 0;
+}
+
+.ticket-requests-sub-heading {
+    font-family: 'Roboto';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.6px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab-buttons {
+    margin: 0 0.5rem;
+    padding: 0.7rem 1rem;
+    font-size: 1.1rem;
+    border: 1px transparent;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+}
+
+.tab-buttons:hover {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    border-color: #D81F84;
+    background-color: white;
+    color: black;
+}
+
+.tab-buttons:active,
+.tab-buttons:focus,
+.active-button {
+    border: 1px solid;
+    color: white;
+    border-radius: 0.5rem;
+    background: #D81F84;
+}
+
+@media (max-width: 300px) {
+    .tabs-container {
+        display: block;
+        align-items: center;
+        font-size: 14px;
+        margin: 1rem 0;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 8px 0;
+    }
+
+    .tab-buttons {
+        margin: 0 0.2rem;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        border: 1px transparent;
+        background: transparent;
+        color: black;
+        cursor: pointer;
+    }
+
+    .tab-buttons:hover {
+        border: 1px solid;
+        border-color: #D81F84;
+        background-color: white;
+        border-radius: 0.5rem;
+        color: black;
+    }
+
+    .tab-buttons:active,
+    .tab-buttons:focus,
+    .active-button {
+        border: 1px solid;
+        border-radius: 0.5rem;
+        color: white;
+        background: #D81F84;
+    }
+
+    .tabs-sub-heading,
+    .ticket-requests-sub-heading {
+        font-size: 24px;
+        display: block;
+        text-align: center;
+    }
+
+    .admin-section{
+        padding-top: 5vh !important;
+        margin: 20px;
+    }
+}
+
+@media (min-width: 300px) and (max-width:800px) {
+    .tabs-container {
+        display: block;
+        align-items: center;
+        font-size: 24px;
+        margin: 1rem 0;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: center;
+        /* margin: 3rem 0; */
+    }
+
+    .tabs-sub-heading,
+    .ticket-requests-sub-heading {
+        font-size: 24px;
+        display: block;
+        text-align: center;
+    }
+
+    .tab-buttons {
+        margin: 0 0.2rem;
+        font-size: 1rem;
+        border: 1px transparent;
+        background: transparent;
+        color: black;
+        cursor: pointer;
+    }
+
+    .tab-buttons:hover {
+        border: 1px solid;
+        border-color: #D81F84;
+        background-color: white;
+        border-radius: 0.5rem;
+        color: black;
+    }
+
+    .tab-buttons:active,
+    .tab-buttons:focus,
+    .active-button {
+        border: 1px solid;
+        border-radius: 0.5rem;
+        color: white;
+        background: #D81F84;
+    }
+
+    .ticket_section {
+        margin: 70px 10px 20px 10px;
+    }
+
+    .admin-section{
+        margin: 20px;
+        padding-top: 10vh !important;
+    }
+}
+
+@media (max-width:1000px) {
+    .ticket_section {
+        margin: 100px 10px 20px 10px;
+    }
+
+    .display-tickets-tabs-container {
+        justify-content: center;
+    }
+}

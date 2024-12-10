@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+a {
+  color: #fff !important;
+}
+
+.container {
+  width: 80% !important;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.btn-primary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: #D81F84;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-primary :hover {
+  color: #D81F84;
+  font-weight: 500;
+  background-color: #fff;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.btn-secondary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: white;
+  color: #D81F84;
+  border-radius: 8px;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-outline {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid white;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.hero-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #D81F84;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+.hero-button:hover {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  border-color: #D81F84;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+}
+
+.delete-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #DC0000;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+#request {
+  border-radius: 10px;
+  border: 0.553px solid #E8E8E8;
+  background: #FAFAFA;
+  width: 100%;
+  height: 280.151px;
+  flex-shrink: 0;
+  vertical-align: top;
+  padding: 5px 5px;
+  margin: 10px 0px;
+  white-space: pre-wrap;
+  color: #B3B3B3;
+  font-family: "Roboto";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.265px;
+}
+
+/* .request-button {
+    border-radius: 9.946px;
+    background: #D81F84;
+    width: 194.503px;
+    height: 45.863px;
+    flex-shrink: 0;
+} */
+.form-heading-signUp {
+  text-align: center;
+  /* padding: 15px 10px; */
+  color: #35363A;
+  font-family: "Roboto";
+  font-size: 34.601px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.form-heading-signUp span {
+  color: black;
+  padding-bottom: 2px;
+  border-bottom: 3px solid #D81F84;
+}
+
+.request-back {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/*Dropdown styles*/
+.select-dropdown select {
+  position: relative;
+  background-color: #E6E6E6;
+  border-radius: 4px;
+  padding: 8px 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.select-dropdown select:active,
+.select-dropdown select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.select-dropdown option {
+  background-color: white;
+  cursor: pointer;
+}
+
+.location {
+  position: relative;
+  padding: 8px 3px;
+  margin: auto 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.business-name {
+  position: relative;
+  padding: 8px 3px;
+  margin: auto 4px;
+  border: none;
+}
+
+.date {
+  position: relative;
+  padding: 6px 0px;
+}
+
+.date-text {
+  margin: auto 12px;
+}
+
+.cancel-icon {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  color: #D81F84;
+  font-size: 28px;
+}
+
+.delete-icon {
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+  color: #DC143C;
+  font-size: 28px;
+}
+@media (max-width: 600px) {
+  .delete-icon {
+    font-size: 1.25em;
+  }
+}
+
+.cross-icon {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  color: #D81F84;
+  font-size: 28px;
+}
+@media (max-width: 600px) {
+  .cross-icon {
+    font-size: 1.25em;
+  }
+}
+
+.ticket-popup-icons {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/*grid layout*/
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem !important;
+  margin: 16px 0;
+}
+@media (max-width: 600px) {
+  .grid-container {
+    padding-left: 0.5rem;
+  }
+}
+
+/**/
+.delete-button {
+  color: #DC0000;
+}
+
+@media (max-width: 690px) {
+  #request {
+    font-size: small;
+  }
+  .cancel-icon {
+    font-size: 20px;
+  }
+  .form-heading-signUp {
+    font-size: larger;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0rem;
+    margin: 5px;
+  }
+  .grid-container .date {
+    justify-content: flex-start;
+    font-size: small;
+  }
+  .location {
+    padding: 0;
+    margin: 0;
+    font-size: small;
+  }
+  .business-name {
+    padding: 0;
+    margin: 0;
+    font-size: small;
+  }
+  .select-dropdown select {
+    position: relative;
+    background-color: #E6E6E6;
+    border-radius: 4px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  .dropdown {
+    margin-left: 0px;
+  }
+  #request {
+    width: 100%;
+    height: 200px;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Grey out the background */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form {
+  height: 100%;
+}
+
+.submit-request {
+  width: 97%;
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=gethelp.css.map */

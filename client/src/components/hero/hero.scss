@@ -1,0 +1,212 @@
+@import './../../basic';
+
+#hero {
+    display: flex;
+    justify-content: space-between;
+    gap: 6rem;
+    @include screen{
+        flex-direction: column-reverse;
+        gap: 3rem;
+    }
+    @include tablet{
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+    @include mobile{
+        flex-direction: column-reverse;
+        gap: 2rem;
+        padding-top: 20%;
+    }
+}
+
+.image-container{
+    width: 50%;
+    @include screen{
+        width: 100%;
+    }
+    @include tablet{
+        width: 100%;
+    }
+    @include mobile{
+        width: 100%;
+    }
+}
+.text-container {
+    width: 50%;
+    margin: 100px 0px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    @include screen{
+        width: 100%;
+        margin: 40px 0px;
+    }
+    @include tablet{
+        width: 100%;
+        margin: 40px 0px;
+    }
+    @include mobile{
+        width: 100%;
+        margin: 40px 0px;
+    }
+}
+
+.hero-heading {
+    color: #000;
+    font-family: 'Inter';
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 70px;
+    letter-spacing: 11.16px;
+    margin: 14px 0px;
+    height: auto;
+    @include mobile{
+        font-size: 32px;
+        line-height: 42px;
+        letter-spacing: 2.5px;
+    }
+}
+
+.hero-details {
+    color: #000;
+    font-family: 'Inter';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 14px 0px;
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 40px;
+    @include mobile{
+        max-width: 100%;
+    }
+}
+
+.hero-image {
+    max-width: 400px;
+    margin: 70px 0px;
+    @include screen{
+        max-width: 70%;
+        margin: 20px 0px;
+    }
+    @include tablet{
+        max-width: 80%;
+        margin: 20px 0px;
+    }
+    @include mobile{
+        max-width: 100%;
+        margin: 20px 0px;
+    }
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: left;
+    margin: 50px 0;
+}
+
+.raise-tickets{
+    width: 320px !important;
+    @include mobile{
+        width: 100% !important;
+    }
+}
+
+.hero-button {
+    background: transparent;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    background-color: #D81F84;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 20px;
+}
+
+.hero-button:hover {
+    background: transparent;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    border-color: #D81F84;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 20px;
+}
+
+.analytics-button {
+    margin: 0 20px;
+}
+
+/*
+
+@media(max-width:800px) {
+    .hero-heading {
+        margin: 0px;
+    }
+
+    .hero-details {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .buttons-container {
+        justify-content: space-between;
+    }
+}
+
+@media(max-width:480px) {
+    .center_class {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    
+    #hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0px;
+    }
+
+    .hero-heading {
+        font-size: 30px;
+        margin: 10px 0px;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .hero-details {
+        font-size: 13px;
+        width: fit-content;
+    }
+
+
+
+    .text-container {
+        margin: 0px 0px;
+        width: 300px;
+
+    }
+
+    .hero-image {
+        max-width: 250px;
+        margin: 0px 0px; 
+    }
+
+}
+
+
+@media(max-width:320px) {
+    .hero-details {
+        display: block;
+        width: 250px;
+        font-size: 12px;
+    }
+
+}
+*/

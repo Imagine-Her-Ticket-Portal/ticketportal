@@ -1,0 +1,53 @@
+.raiseTicket{
+    margin: 0px 120px;
+    justify-content: space-sround;
+    max-width: 1980px;
+   
+}
+
+.heading{
+    color: #000;
+font-family: 'Roboto';
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 1.6px;
+}
+span{
+    color: #D81F84;
+
+}
+.ticket-box{
+    display: flex;
+    justify-content: space-between;
+    padding: 70px 0px;
+    flex-wrap:wrap;
+    height: 100%;
+
+}
+
+@media (max-width:450px) {
+    .ticket-box{
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .raiseTicket{
+      
+        margin: 0px 0px;
+    }
+    .heading{
+        font-size: 26px;
+        margin:50px 10px;
+        margin-bottom: 0px;
+    }
+}
+@media (max-width:1050px) {
+    .ticket-box{
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+}

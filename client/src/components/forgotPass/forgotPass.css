@@ -1,0 +1,74 @@
+.form-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+}
+.form{
+    
+    width: 550px !important;
+}
+
+
+
+.input-box {
+    width: 100% !important; /* Full width by default */
+    max-width: 481px; /* Set a max-width to control the size */
+    margin: 5px 5px;
+    border-radius: 9.886px;
+    border: 1.648px solid #C8C8C8;
+    background: rgba(255, 255, 255, 0.00);
+    height: 60.963px;
+    flex-shrink: 0;
+    color: #B8B8B8;
+    font-family: 'Roboto';
+    font-size: 14.829px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.222px;
+    padding: 20px 20px;
+}
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+    .input-box {
+        max-width: 400px; /* Adjust max-width for tablets */
+        font-size: 13px; /* Smaller font size */
+        padding: 15px 15px;
+        margin-left: 20px; /* Adjust padding */
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    .input-box {
+        max-width: 275px; /* Reduce width for mobile */
+        font-size: 12px; /* Further reduce font size */
+        padding: 10px 10px; /* Reduce padding */
+        height: 50px; /* Adjust height */
+        margin-left: 20px; 
+    }
+
+    .button{
+        left: -20px;
+        position: relative;
+    }
+}
+
+.heading{
+    margin-left: -10px;
+}
+
+.button{
+    color: white;
+    background-color: #D81F84;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    /* border: 1px solid black; */
+    width: 120px;
+    border-radius: 8px;
+
+}
+

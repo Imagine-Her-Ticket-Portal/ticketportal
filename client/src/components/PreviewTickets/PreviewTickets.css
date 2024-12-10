@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+a {
+  color: #fff !important;
+}
+
+.container {
+  width: 80% !important;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.btn-primary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: #D81F84;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-primary :hover {
+  color: #D81F84;
+  font-weight: 500;
+  background-color: #fff;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.btn-secondary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: white;
+  color: #D81F84;
+  border-radius: 8px;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-outline {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid white;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.hero-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #D81F84;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+.hero-button:hover {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  border-color: #D81F84;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+}
+
+.delete-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #DC0000;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/*heading*/
+.analytics-heading {
+  font-family: "Roboto";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1.6px;
+}
+@media (max-width: 600px) {
+  .analytics-heading {
+    font-size: 25px;
+    text-align: center;
+  }
+}
+
+/*table styles*/
+.table-wrapper {
+  /* overflow: hidden; */
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 90vh;
+  position: relative;
+  margin: 50px 0;
+}
+
+.table-wrapper table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  /* Ensure no space between table cells */
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  max-height: calc(90vh - 30px);
+  /* Adjusted maximum height to accommodate scrollbar */
+  /* max-width: calc(90% - 30px); */
+  /* Adjusted maximum width to accommodate scrollbar */
+  margin-right: -16px;
+  /* Compensate for the space taken by scrollbar */
+  margin-bottom: -16px;
+  /* Compensate for the space taken by scrollbar */
+  padding-right: 16px;
+  /* Compensate for the space taken by scrollbar */
+  padding-bottom: 16px;
+  /* Compensate for the space taken by scrollbar */
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background-color: #D81F84;
+  border-radius: 5px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #a3135c;
+}
+
+.table-wrapper tr {
+  white-space: nowrap;
+  /* Prevent wrapping */
+}
+
+.table-wrapper thead th,
+.table-wrapper tbody td {
+  padding: 16px;
+}
+
+/*date styles*/
+.date-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.date-box {
+  margin: 10px;
+  border: transparent;
+  border-bottom: 1px solid;
+  padding: 7px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/*preview buttons container styles*/
+.preview-buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 600px) {
+  .preview-buttons-container {
+    display: block;
+  }
+}
+
+.icon-container {
+  margin: 0px 30px;
+}
+
+@media (min-width: 300px) and (max-width: 800px) {
+  .table-wrapper {
+    margin: 30px 0;
+  }
+  .preview-buttons-container {
+    display: block;
+  }
+  .analytics-heading {
+    font-size: 25px;
+    text-align: center;
+  }
+}
+@media (max-width: 800px) {
+  .download-button {
+    padding: 10px;
+  }
+  .hero-button {
+    padding: 10px;
+  }
+  .date-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .icon-container {
+    margin: 0 10px;
+  }
+  .date-container > div {
+    padding: 10px 0;
+  }
+  .download-button-container {
+    display: grid;
+    justify-content: center;
+  }
+}
+@media (max-width: 300px) {
+  .date-selector-container {
+    max-width: 20px;
+  }
+}/*# sourceMappingURL=PreviewTickets.css.map */

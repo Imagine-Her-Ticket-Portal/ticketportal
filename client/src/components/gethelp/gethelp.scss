@@ -1,0 +1,227 @@
+@import '../../basic';
+
+#request { //text-area
+    border-radius: 10px;
+    border: 0.553px solid #E8E8E8;
+    background: #FAFAFA;
+    width: 100%;
+    height: 280.151px;
+    flex-shrink: 0;
+    vertical-align: top;
+    padding: 5px 5px;
+    margin: 10px 0px;
+    white-space: pre-wrap;
+    color: #B3B3B3;
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.265px;
+}
+
+/* .request-button {
+    border-radius: 9.946px;
+    background: #D81F84;
+    width: 194.503px;
+    height: 45.863px;
+    flex-shrink: 0;
+} */
+
+.form-heading-signUp {
+    text-align: center;
+    /* padding: 15px 10px; */
+    color: #35363A;
+    font-family: 'Roboto';
+    font-size: 34.601px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.form-heading-signUp span {
+    color: black;
+    padding-bottom: 2px;
+    border-bottom: 3px solid #D81F84;
+}
+
+.request-back {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/*Dropdown styles*/
+.select-dropdown select {
+    position: relative;
+    background-color: #E6E6E6;
+    border-radius: 4px;
+    padding: 8px 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.select-dropdown select:active,
+.select-dropdown select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.select-dropdown option {
+    background-color: white;
+    cursor: pointer;
+}
+
+.location {
+    position: relative;
+    padding: 8px 3px;
+    margin: auto 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.business-name {
+    position: relative;
+    padding: 8px 3px;
+    margin: auto 4px;
+    border: none;
+}
+
+.date {
+    position: relative;
+    padding: 6px 0px;
+}
+
+.date-text {
+    margin: auto 12px;
+}
+
+.cancel-icon {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: #D81F84;
+    font-size: 28px;
+}
+
+.delete-icon {
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+    color: #DC143C;
+    font-size: 28px;
+    @include mobile{
+        font-size: 1.25em;
+    }
+}
+
+.cross-icon {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: #D81F84;
+    font-size: 28px;
+    @include mobile{
+        font-size: 1.25em;
+    }
+}
+
+.ticket-popup-icons{
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/*grid layout*/
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem !important;
+    margin: 16px 0;
+    @include mobile{
+        padding-left: .5rem;
+    }
+}
+
+/**/
+.delete-button{
+    color: #DC0000;
+}
+
+@media (max-width: 690px) {
+    #request {
+        font-size: small;
+    }
+
+    .cancel-icon {
+        font-size: 20px;
+    }
+
+    .form-heading-signUp {
+        font-size: larger;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0rem;
+        margin: 5px;
+    }
+
+    .grid-container .date {
+        justify-content: flex-start;
+        font-size: small;
+    }
+
+    .location {
+        padding: 0;
+        margin: 0;
+        font-size: small;
+    }
+
+    .business-name {
+        padding: 0;
+        margin: 0;
+        font-size: small;
+    }
+
+    .select-dropdown select {
+        position: relative;
+        background-color: #E6E6E6;
+        border-radius: 4px;
+        padding: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropdown {
+        margin-left: 0px;
+    }
+
+    #request {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Grey out the background */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form{
+    height: 100%;
+}
+
+.submit-request{
+    width: 97%;
+    margin-bottom: 1rem;
+}

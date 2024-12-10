@@ -1,0 +1,407 @@
+/* ======= NavBar Styles ======= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+a {
+  color: #fff !important;
+}
+
+.container {
+  width: 80% !important;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.btn-primary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: #D81F84;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-primary :hover {
+  color: #D81F84;
+  font-weight: 500;
+  background-color: #fff;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.btn-secondary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: white;
+  color: #D81F84;
+  border-radius: 8px;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-outline {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid white;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.hero-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #D81F84;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+.hero-button:hover {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  border-color: #D81F84;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+}
+
+.delete-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #DC0000;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+nav {
+  height: 12vh;
+  background-color: #fff;
+  padding-block: 1rem;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+@media (max-width: 600px) {
+  nav .container {
+    padding: 0;
+  }
+}
+nav .mobile-dropdown {
+  display: none;
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  height: 100%;
+  cursor: pointer;
+}
+nav .logo .company-logo {
+  height: 7.5vh;
+}
+nav .logo h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  nav .logo h3 {
+    display: none;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  nav .logo h3 {
+    display: none;
+  }
+}
+nav .links {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  nav .links {
+    display: none;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  nav .links {
+    display: none;
+  }
+}
+nav .links ul {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 0;
+}
+nav .links ul li {
+  color: #35363A;
+  cursor: pointer;
+  font-weight: 500;
+}
+nav .links ul .btn-primary {
+  width: 6rem;
+  background-color: #D81F84;
+  color: #fff;
+}
+nav .links ul .navlinks:hover {
+  color: #D81F84 !important;
+}
+nav .active {
+  color: #D81F84 !important;
+}
+nav .loggedin-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+}
+@media (max-width: 600px) {
+  nav .loggedin-links {
+    display: none;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  nav .loggedin-links {
+    display: none;
+  }
+}
+nav .loggedin-links ul {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  gap: 2.5rem;
+}
+nav .loggedin-links ul li {
+  color: #35363A;
+  cursor: pointer;
+  font-weight: 500;
+}
+nav .loggedin-links ul .navlinks:hover {
+  color: #D81F84 !important;
+}
+nav .loggedin-links .profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+nav .loggedin-links .profile .name {
+  color: #fff;
+  margin: 0;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-right: 3rem;
+  font-size: 1.1rem;
+  align-items: center;
+}
+nav .loggedin-links .profile .username {
+  background-color: #D81F84;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 14px;
+  align-items: center;
+  border-radius: 10px;
+}
+nav .loggedin-links .profile img {
+  height: 8vh;
+  border: 1px solid white;
+  position: absolute;
+  right: 0;
+  margin: 0 !important;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #fff;
+}
+nav .loggedin-links .active {
+  color: #D81F84 !important;
+}
+@media screen {
+  nav .mobile-menu-icon {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  nav .mobile-menu-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  nav .mobile-menu-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .mobile-dropdown {
+    display: block;
+    margin-top: 15vh;
+    position: fixed;
+    background-color: #fff;
+    width: 100vw;
+    z-index: 10 !important;
+  }
+  .mobile-dropdown .mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: -2rem;
+    padding-left: 0;
+    background-color: #fff;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding-left: 15%;
+    padding-block: 10%;
+  }
+  .mobile-dropdown .mobile-links li {
+    color: #35363A;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .mobile-dropdown .mobile-links .btn-primary {
+    width: 6rem;
+    margin: 0 auto;
+  }
+  .mobile-dropdown .mobile-links .profile {
+    display: inline !important;
+    cursor: pointer;
+  }
+  .mobile-dropdown .mobile-links .profile .name {
+    color: #D81F84;
+    margin: 0;
+    padding-block: 0.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center !important;
+  }
+  .mobile-dropdown .mobile-links .profile img {
+    height: 8vh;
+    border: 1px solid white;
+    position: absolute;
+    right: 0;
+    margin: 0 !important;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    display: none;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .mobile-dropdown {
+    margin-top: 0vh;
+    position: fixed;
+    background-color: #fff;
+    width: 100vw;
+    z-index: 10 !important;
+  }
+  .mobile-dropdown .mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 1.25rem;
+    margin-top: -2rem;
+    padding-left: 0;
+    background-color: #fff;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding-left: 15%;
+    padding-block: 10%;
+  }
+  .mobile-dropdown .mobile-links li {
+    color: #35363A;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .mobile-dropdown .mobile-links .btn-primary {
+    width: 6rem;
+    margin: 0 auto;
+  }
+  .mobile-dropdown .mobile-links .profile {
+    display: inline !important;
+    cursor: pointer;
+  }
+  .mobile-dropdown .mobile-links .profile .name {
+    color: #D81F84;
+    margin: 0;
+    padding-block: 0.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center !important;
+  }
+  .mobile-dropdown .mobile-links .profile img {
+    height: 8vh;
+    border: 1px solid white;
+    position: absolute;
+    right: 0;
+    margin: 0 !important;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    display: none;
+  }
+}/*# sourceMappingURL=navbar.css.map */

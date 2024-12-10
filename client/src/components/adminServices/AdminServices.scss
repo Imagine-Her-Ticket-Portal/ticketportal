@@ -1,0 +1,54 @@
+@import '../../basic';
+
+.tickets-heading {
+    font-size: 1rem;
+    border-bottom: 2px solid $primary;
+    padding: 10px 0;
+    margin: 0.5rem;
+    font-weight: 600;
+    color: $primary;
+    text-transform: capitalize;
+    display: inline-flex;
+}
+
+.boxes {
+    display: flex;
+    justify-content: center;
+}
+
+.box .section-container {
+    margin: 20px;
+}
+
+@include mobile {
+    .section-container {
+        margin: 1px;
+    }
+
+    .boxes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@include tablet {
+    .section-container {
+        margin: 30px;
+    }
+
+    .tickets-heading {
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .boxes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+a {
+  color: #fff !important;
+}
+
+.container {
+  width: 80% !important;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.btn-primary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: #D81F84;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-primary :hover {
+  color: #D81F84;
+  font-weight: 500;
+  background-color: #fff;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.btn-secondary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: white;
+  color: #D81F84;
+  border-radius: 8px;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-outline {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid white;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.hero-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #D81F84;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+.hero-button:hover {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  border-color: #D81F84;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+}
+
+.delete-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #DC0000;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.admin-navbar {
+  height: 100vh;
+  background-color: #D81F84;
+  min-width: 270px;
+  width: 270px;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .admin-navbar {
+    min-width: 100px;
+    width: 100px;
+  }
+}
+@media (max-width: 600px) {
+  .admin-navbar {
+    display: none;
+  }
+}
+.admin-navbar ul {
+  padding-top: 2rem;
+}
+.admin-navbar ul Link {
+  display: flex;
+  align-items: center;
+}
+.admin-navbar ul li {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.admin-navbar ul li svg {
+  margin-right: 1rem;
+  height: 1rem;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .admin-navbar ul li svg {
+    height: 2rem;
+  }
+}
+.admin-navbar ul li:nth-child(1) {
+  opacity: 1;
+}
+.admin-navbar ul li p {
+  margin: 0;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .admin-navbar ul li p {
+    display: none;
+  }
+}
+
+Link,
+a {
+  text-decoration: none;
+}
+
+.admin-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  cursor: pointer;
+}
+.admin-logo h3 {
+  color: #fff !important;
+  font-size: 1.25rem;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .admin-logo h3 {
+    display: none;
+  }
+}
+.admin-logo .company-logo {
+  height: 3.5rem;
+  position: absolute;
+  left: 35px;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .admin-logo .company-logo {
+    height: 2rem;
+    position: relative;
+    left: 0px;
+  }
+}
+
+.download {
+  width: 100%;
+  position: absolute;
+  bottom: 10%;
+  display: grid;
+  place-items: center;
+}
+.download .download-icon {
+  display: none;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .download .download-icon {
+    display: block;
+  }
+}
+.download button {
+  margin: 0 auto !important;
+}
+.download button svg {
+  margin-right: 1rem;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .download button {
+    display: none;
+  }
+}
+
+.admin-navbar-container {
+  position: relative;
+}
+
+.admin-navbar-mobile {
+  display: none;
+  height: 96px;
+  background-color: #D81F84;
+  position: fixed;
+  bottom: 0;
+  top: calc(100% - 96px);
+}
+@media (max-width: 600px) {
+  .admin-navbar-mobile {
+    display: block !important;
+  }
+}
+.admin-navbar-mobile ul {
+  display: flex;
+  margin-inline: 1.5rem;
+  justify-content: space-between;
+  padding: 0;
+  gap: 0.25rem;
+  height: 15vh;
+  padding-block-end: 1rem;
+}
+.admin-navbar-mobile ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.admin-navbar-mobile ul li svg {
+  margin: 0;
+  height: 2rem;
+}
+.admin-navbar-mobile ul li p {
+  margin: 0;
+  font-weight: 200;
+}/*# sourceMappingURL=adminNavbar.css.map */

@@ -1,0 +1,376 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+a {
+  color: #fff !important;
+}
+
+.container {
+  width: 80% !important;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.btn-primary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: #D81F84;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-primary :hover {
+  color: #D81F84;
+  font-weight: 500;
+  background-color: #fff;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.btn-secondary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: white;
+  color: #D81F84;
+  border-radius: 8px;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-outline {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid white;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.hero-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #D81F84;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+.hero-button:hover {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  border-color: #D81F84;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+}
+
+.delete-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #DC0000;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.profile_page {
+  height: 75vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  .profile_page {
+    width: 85%;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: 0 auto;
+    border: 0;
+    padding-top: 2rem !important;
+  }
+}
+
+.container-profile-admin {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 600px) {
+  .container-profile-admin {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 !important;
+  }
+}
+
+.profile-img {
+  width: 121px;
+  height: 121px;
+  flex-shrink: 0;
+  background-color: black;
+  border-radius: 100%;
+  margin: 0 50px;
+}
+
+.profile-details {
+  display: flex;
+}
+
+.title {
+  color: #35363A;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 13px 0px;
+  width: 80px;
+}
+
+.name {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.name-box {
+  min-width: 300px;
+  height: 51px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 2px solid #EAEAEA;
+  background: #FAFAFA;
+  color: #35363A;
+  font-family: "Ubuntu";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.edit {
+  margin: 0px 0px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+.buttons {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+.buttons button {
+  width: 100%;
+}
+.buttons button:hover {
+  width: 100%;
+}
+
+.req-popup {
+  color: #3F80CC;
+  font-family: "Roboto";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.22px;
+  text-decoration-line: underline;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+/*profile-icon*/
+.profile-icon {
+  cursor: pointer;
+  color: #D81F84;
+  font-size: 28px;
+}
+
+.profile-cont {
+  background-color: white;
+  padding-left: 4rem;
+}
+@media (max-width: 600px) {
+  .profile-cont {
+    padding-left: 0;
+    text-align: center;
+    padding-bottom: 3rem;
+  }
+}
+.profile-cont .name {
+  margin: 0;
+}
+.profile-cont h1 {
+  margin-bottom: 1rem;
+}
+@media (max-width: 600px) {
+  .profile-cont h1 {
+    text-align: center;
+  }
+}
+
+.stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.stats .stat-box {
+  height: 8rem;
+  width: 8rem;
+  background-color: #35363A;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.stats .primary-stat {
+  background-color: #D81F84;
+  color: #fff;
+}
+
+@media (max-width: 1070px) {
+  .profile-img {
+    display: none;
+  }
+  /*
+  .profile_page {
+      margin: 0 10px 20px 10px;
+      padding: 0 20px 90px 20px;
+  }
+  */
+}
+/*
+@media (max-width:720px) {
+    .profile-cont {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile-icon {
+        font-size: 20px;
+    }
+
+    .profile-details {
+        padding-top: 20px;
+    }
+
+    .buttons {
+        display: flex;
+    }
+
+    .container-profile {
+        display: block;
+    }
+
+    .profile_page {
+        margin: 0 18px 18px 18px;
+        border-radius: 0px;
+        padding: 0 50px 40px 50px;
+    }
+
+    .edit1 {
+        margin-bottom: 0px;
+    }
+
+    .edit {
+        width: 120px;
+        font-size: 13px;
+        height: 32px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .name {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width:500px) {
+
+    .title,
+    .name-box {
+        font-size: 15px;
+        max-width: 65px;
+    }
+
+    .name-box {
+        min-width: 190px;
+        height: 40px;
+    }
+
+    .edit {
+        width: 90px;
+        font-size: 13px;
+        height: 32px;
+    }
+
+    .side {
+        font-size: 15px !important;
+        position: absolute;
+        bottom: 40px;
+        left: 140px;
+    }
+
+    .profile_page {
+        padding: 0 10px 40px 10px;
+    }
+}
+*//*# sourceMappingURL=AdminProfile.css.map */

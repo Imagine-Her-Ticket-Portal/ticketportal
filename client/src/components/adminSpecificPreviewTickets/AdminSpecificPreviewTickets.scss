@@ -1,0 +1,22 @@
+@import '../../basic';
+
+.search-component{
+    margin: 20px 10px 10px 10px;
+}
+
+.search-button{
+    cursor: pointer;
+    @include mobile{
+        padding: 10px;
+        font-size: x-large;
+    }
+}
+
+.form-outline .form-control{
+    border-color: #B6BBC4;
+    border-radius: 0px;
+}
+
+.form-outline{
+    border: 0px 0px 1px 0px;
+}

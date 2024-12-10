@@ -1,0 +1,51 @@
+.otp-field {
+    flex-direction: row;
+    column-gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .otp-field input {
+    height: 45px;
+    width: 42px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  .otp-field input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+  .otp-field input::-webkit-inner-spin-button,
+  .otp-field input::-webkit-outer-spin-button {
+    display: none;
+  }
+
+  .buttons2{
+    display: flex;
+    margin: 40px 60px;
+    justify-content: space-between;
+  }
+  .otp-button{
+    margin: 0px 0px!important;
+  }
+  .forgotPass{
+    cursor: pointer;
+  }
+
+  @media (max-width: 690px) {
+    .otp-field input{
+      height: 30px ;
+      width: 30px;
+    }
+    .buttons2{
+      margin: 30px 0px;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .otp-button{
+      margin: 0px 5px !important;
+    }
+  }

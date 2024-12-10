@@ -1,0 +1,50 @@
+@import '../../basic';
+
+.adjust-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+Link {
+    color: #D81F84;
+}
+
+.profile-button {
+    display: inline-flex;
+    background-color: $primary;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 1rem;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    position: sticky;
+    margin: 10px;
+}
+
+@include mobile {
+
+    // .breadcrumbs-display {
+    //     display: none
+    // }
+    .adjust-profile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    span {
+        padding: 0px;
+    }
+
+    .profile-button {
+        padding: 12px;
+        margin: 12px;
+    }
+}
+
+// @include tablet {
+//     .breadcrumbs-display {
+//         display: none
+//     }
+// }

@@ -1,0 +1,20 @@
+/* .main-content {
+    margin-top: 250px
+}
+
+@media(max-width:800px) {
+    .main-content {
+        margin-top: 200px;
+    }
+} */
+
+.req-popup {
+    color: #3F80CC;
+    font-family: 'Roboto';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.22px;
+    text-decoration-line: underline;
+}

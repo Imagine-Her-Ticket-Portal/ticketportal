@@ -1,0 +1,53 @@
+.table-wrapper {
+    overflow: hidden;
+}
+
+.modal-content {
+    max-width: 100%;
+    max-height: 90vh;
+    /* margin: 5vh auto; */
+    overflow: hidden;
+    /* Disable native scrolling */
+    position: relative;
+    /* Ensure child elements can be positioned relative to this container */
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    max-height: calc(90vh - 30px);
+    /* Adjusted maximum height to accommodate scrollbar */
+    /* max-width: calc(90% - 30px); */
+    /* Adjusted maximum width to accommodate scrollbar */
+    margin-right: -16px;
+    /* Compensate for the space taken by scrollbar */
+    margin-bottom: -16px;
+    /* Compensate for the space taken by scrollbar */
+    padding-right: 16px;
+    /* Compensate for the space taken by scrollbar */
+    padding-bottom: 16px;
+    /* Compensate for the space taken by scrollbar */
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #D81F84;
+    /* Pink color */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: #D81F84;
+    /* Pink color */
+    border-radius: 5px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #a3135c;
+    /* Adjusted hover color */
+}

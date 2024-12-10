@@ -1,0 +1,35 @@
+@import './basic';
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  //adjusted this so that the distance decreases in the main screen on adminside
+  margin-top: 12vh;
+
+  @include mobile {
+    margin-top: 0;
+    height: 100svh;
+  }
+}
+
+.main-content {
+  // position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0 auto;
+}
+
+#root {
+  width: 100vw;
+}

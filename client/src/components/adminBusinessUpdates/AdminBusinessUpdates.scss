@@ -1,0 +1,7 @@
+@import '../../basic';
+
+.category-top{
+    @include mobile{
+        padding-top: 0 !important;
+    }
+}

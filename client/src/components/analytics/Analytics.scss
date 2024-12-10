@@ -1,0 +1,25 @@
+@import '../../basic';
+
+.analytics-container {
+    margin: 50px 120px;
+    justify-content: space-around;
+    @include mobile{
+        margin: 10%;
+    }
+}
+
+
+/* .heading-container {
+    display: flex;
+    justify-content: space-between;
+} */
+
+/* 
+.all-tickets-heading {
+    font-family: 'Roboto';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1.6px;
+} */

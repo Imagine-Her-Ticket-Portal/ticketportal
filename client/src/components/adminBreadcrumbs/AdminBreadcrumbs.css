@@ -1,0 +1,31 @@
+.breadcrumbs {
+  margin: 10px 0 20px 0;
+}
+
+.link {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #D81F84;
+  padding: 0.5rem;
+  /* Default padding */
+}
+@media (min-width: 576px) {
+  .link {
+    padding: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .link {
+    padding: 1.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .link {
+    padding: 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .link {
+    padding: 2.5rem;
+  }
+}/*# sourceMappingURL=AdminBreadcrumbs.css.map */

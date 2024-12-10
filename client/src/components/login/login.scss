@@ -1,0 +1,169 @@
+@import '../../basic';
+
+form {
+    display: block;
+    margin: 20px 20px;
+    margin-top: 3rem !important;
+    @include mobile{
+        margin: 10px;
+        transform: scale(1.1);
+    }
+}
+
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: $primary;
+    border-radius: 50%;
+    display: block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    position: absolute;
+    left: 47%;
+    top: 47%;
+    z-index: 1000;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#email,
+#password {
+    width: 100% !important;
+    margin: 5px 5px;
+    border-radius: 9.886px;
+    border: 1.648px solid #C8C8C8;
+    background: rgba(255, 255, 255, 0.00);
+    height: 60.963px;
+    flex-shrink: 0;
+    color: #B8B8B8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14.829px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.222px;
+    padding: 20px 20px;
+    margin: 0 auto;
+}
+
+.form-heading {
+    text-align: center;
+    // padding: 25px 10px;
+    color: #35363A;
+    font-family: 'Roboto', sans-serif;
+    font-size: 34.601px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.input{
+    margin-block: 1rem;
+}
+label {
+    background-color: transparent;
+    position: absolute;
+    display: block !important;
+    // width: 10%;
+    max-width: fit-content;
+    left: 0 !important;
+    top: 12px !important;
+    padding-inline: 8px;
+}
+
+.forgotPass {
+    text-align: right;
+    color: #037DE2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13.181px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.264px;
+    margin: 20px 0px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.bottom-text {
+    color: #037DE2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.264px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.bottom-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.password_container {
+    display: flex;
+}
+
+.password-toggle {
+    position: relative;
+    right: 35px;
+    top: 50% !important;
+    transform: translateY(25%) !important;
+    box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+
+    form {
+        margin: 10px 10px;
+    }
+
+    .form-heading {
+        font-size: 20px;
+        // padding: 10px 0px;
+    }
+
+    #email,
+    #password {
+        height: 30px;
+        margin: 3px 3px;
+    }
+
+    .password-toggle {
+        top: 15px;
+        size: 2px;
+    }
+
+    .forgotPass,
+    .bottom-text {
+        font-size: 12px;
+    }
+
+    .hero-button {
+        background: transparent;
+        border: 1px solid;
+        border-radius: 0.5rem;
+        background-color: #D81F84;
+        color: white;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 14px;
+        text-align: center;
+    }
+
+}

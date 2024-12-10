@@ -1,0 +1,38 @@
+.scroll-up-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px; /* Set width */
+  height: 50px; /* Set height */
+  background-color: pink;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Makes the button round */
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-up-button:hover {
+  background-color: #ff69b4; /* Slightly darker pink on hover */
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.scroll-up-button:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-up-button {
+    bottom: 15px;
+    right: 15px;
+    width: 40px; /* Adjust size for smaller screens */
+    height: 40px; /* Adjust size for smaller screens */
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=ScrollUpButton.css.map */

@@ -1,0 +1,272 @@
+@import './../../basic';
+
+.profile_page {
+    height: 75vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include mobile {
+        width: 85%;
+        min-height: 100vh;
+        flex-direction: row;
+        margin: 0 auto;
+        border: 0;
+        padding-top: 2rem !important;
+        //padding-top: 30px;
+        //margin-top: 4rem;
+    }
+}
+
+.container-profile-admin {
+    display: flex;
+    justify-content: space-around;
+
+    @include mobile {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0 !important;
+    }
+}
+
+.profile-img {
+    width: 121px;
+    height: 121px;
+    flex-shrink: 0;
+    background-color: black;
+    border-radius: 100%;
+    margin: 0 50px;
+}
+
+.profile-details {
+    display: flex;
+
+}
+
+.title {
+    color: #35363A;
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 13px 0px;
+    width: 80px;
+}
+
+.name {
+    display: flex;
+    margin-bottom: 30px;
+
+}
+
+.name-box {
+    min-width: 300px;
+    height: 51px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 2px solid #EAEAEA;
+    background: #FAFAFA;
+    color: #35363A;
+    font-family: 'Ubuntu';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.edit {
+    margin: 0px 0px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.buttons {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    // padding-right: 2rem;
+
+    button {
+        width: 100%;
+    }
+
+    button:hover {
+        width: 100%;
+    }
+}
+
+.req-popup {
+    color: #3F80CC;
+    font-family: 'Roboto';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.22px;
+    text-decoration-line: underline;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+/*profile-icon*/
+.profile-icon {
+    cursor: pointer;
+    color: #D81F84;
+    font-size: 28px;
+}
+
+.profile-cont {
+    background-color: white;
+    padding-left: 4rem;
+
+    @include mobile {
+        padding-left: 0;
+        text-align: center;
+        padding-bottom: 3rem;
+    }
+
+    .name {
+        margin: 0;
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+
+        @include mobile {
+            text-align: center;
+        }
+    }
+}
+
+.stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+
+    .stat-box {
+        height: 8rem;
+        width: 8rem;
+        background-color: $black;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .primary-stat {
+        background-color: $primary;
+        color: #fff;
+    }
+}
+
+
+@media (max-width:1070px) {
+    .profile-img {
+        display: none;
+    }
+
+    // .edit1 {
+    //     // margin-bottom: 80px;
+    // }
+
+    /*
+    .profile_page {
+        margin: 0 10px 20px 10px;
+        padding: 0 20px 90px 20px;
+    }
+    */
+
+}
+
+/*
+@media (max-width:720px) {
+    .profile-cont {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile-icon {
+        font-size: 20px;
+    }
+
+    .profile-details {
+        padding-top: 20px;
+    }
+
+    .buttons {
+        display: flex;
+    }
+
+    .container-profile {
+        display: block;
+    }
+
+    .profile_page {
+        margin: 0 18px 18px 18px;
+        border-radius: 0px;
+        padding: 0 50px 40px 50px;
+    }
+
+    .edit1 {
+        margin-bottom: 0px;
+    }
+
+    .edit {
+        width: 120px;
+        font-size: 13px;
+        height: 32px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .name {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width:500px) {
+
+    .title,
+    .name-box {
+        font-size: 15px;
+        max-width: 65px;
+    }
+
+    .name-box {
+        min-width: 190px;
+        height: 40px;
+    }
+
+    .edit {
+        width: 90px;
+        font-size: 13px;
+        height: 32px;
+    }
+
+    .side {
+        font-size: 15px !important;
+        position: absolute;
+        bottom: 40px;
+        left: 140px;
+    }
+
+    .profile_page {
+        padding: 0 10px 40px 10px;
+    }
+}
+*/

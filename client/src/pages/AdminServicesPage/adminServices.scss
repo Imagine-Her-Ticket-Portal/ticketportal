@@ -1,0 +1,22 @@
+@import '../../basic';
+
+
+main{
+    height: 100vh;
+    width: calc(100% - #{$sidebar});
+    float: right;
+    padding-inline: 2rem;
+    margin-top: -4rem;
+
+    @include mobile{
+        width: 100%;
+        float: initial;
+        padding-inline: 1rem;
+        margin-top: 0;
+    }
+
+    @include tablet{
+        width: calc(100% - #{$sidebar-tablet});
+        padding-inline: 2rem;
+    }
+}

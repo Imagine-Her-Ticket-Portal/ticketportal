@@ -1,0 +1,152 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Grey out the background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* Adjust the value as needed */
+}
+
+.icon {
+  color: #D81F84;
+}
+
+.date-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px;
+}
+
+.date-box {
+  margin: 10px;
+  border: transparent;
+  border-bottom: 1px solid;
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.download-button-navbar {
+  background: transparent;
+  border: 1px solid;
+  text-align: center;
+  border-radius: 0.5rem;
+  background-color: #D81F84;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 10px 20px;
+}
+
+.download-button-navbar:hover {
+  color: #D81F84;
+  background-color: white;
+}
+
+.download-all-tickets-button-navbar {
+  background: transparent;
+  border: 1px solid;
+  text-align: center;
+  border-radius: 0.5rem;
+  background-color: #D81F84;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 10px 20px;
+}
+
+.download-specific-button-navbar {
+  background: transparent;
+  border: 1px solid;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: #D81F84;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 10px 20px;
+}
+
+.download-ticket-heading {
+  text-align: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.download-ticket-heading span {
+  color: black;
+  padding-bottom: 2px;
+  border-bottom: 3px solid #D81F84;
+}
+
+.button-container {
+  padding-top: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 32%;
+  margin-bottom: 20px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 3px solid #D81F84;
+}
+
+.divider::before {
+  margin-right: 10px;
+}
+
+.divider::after {
+  margin-left: 10px;
+}
+
+.divider span {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+}
+
+@media (max-width: 800px) {
+  .date-selector-container {
+    margin: 30px;
+  }
+  .download-button {
+    padding: 10px;
+  }
+  .hero-button {
+    padding: 10px;
+  }
+  .button-container {
+    padding-top: 20px;
+    display: inline-flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+}
+@media (max-width: 300px) {
+  .date-selector-container {
+    max-width: 20px;
+  }
+  .button-container {
+    margin: 12px;
+  }
+}/*# sourceMappingURL=AdminDownloadButton.css.map */

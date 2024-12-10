@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+a {
+  color: #fff !important;
+}
+
+.container {
+  width: 80% !important;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.btn-primary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: #D81F84;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-primary :hover {
+  color: #D81F84;
+  font-weight: 500;
+  background-color: #fff;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.btn-secondary {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: white;
+  color: #D81F84;
+  border-radius: 8px;
+  border: 1px solid #D81F84;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.btn-outline {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid white;
+  box-sizing: content-box;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.hero-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #D81F84;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+.hero-button:hover {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  border-color: #D81F84;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+}
+
+.delete-button {
+  padding-block: 0.6rem;
+  padding-inline: 0.7rem;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: #DC0000;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.analytics-section {
+  margin: 20px;
+}
+
+.switch-tabs {
+  display: flex;
+  align-items: center;
+}
+
+.switch-view {
+  font-size: 1rem;
+  color: #D81F84;
+  font-weight: 600;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.active-filter-application,
+.switch-view:hover {
+  border-bottom: 2px solid #D81F84;
+  padding: 0.5rem 0;
+}
+
+.details-box {
+  display: flex;
+}
+
+.status-detail-box {
+  padding: 30px 50px;
+  border: 1px solid #D81F84;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.box-1 {
+  margin: 25px 50px 25px 10px;
+  background-color: #35363A;
+  color: #fff;
+}
+
+.box-2 {
+  margin: 25px 50px 25px 0px;
+  background-color: #35363A;
+  color: #fff;
+}
+
+.box-1:hover,
+.box-2:hover {
+  background-color: #D81F84;
+}
+
+@media (max-width: 600px) {
+  .switch-tabs {
+    justify-content: center;
+  }
+  .analytics-section {
+    margin: 10px;
+  }
+  .details-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .status-detail-box {
+    margin: 10px;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .analytics-section {
+    margin: 30px;
+  }
+  .switch-tabs {
+    justify-content: center;
+  }
+  .status-detail-box {
+    padding: 20px 30px;
+  }
+}/*# sourceMappingURL=AdminAnalytics.css.map */
