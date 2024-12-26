@@ -38,7 +38,7 @@ export default function Hero() {
       <div className="text-container">
         <div className="hero-heading">
           {
-            !isAuthenticated ? (<>TICKET <br></br>PORTAL</>) : (<>Hello Entrepreneur</>)
+            !isAuthenticated ? (<>TICKET <br></br>PORTAL</>) : (<>Hello Entrepreneur!</>)
           }
           
         </div>

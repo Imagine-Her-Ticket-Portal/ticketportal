@@ -13,7 +13,8 @@ import queryRouter from "./routes/query";
 const app = express();
 
 app.use(cors({
-  origin: "https://ticketportal-frontend.onrender.com",
+  // origin: "https://ticketportal-frontend.onrender.com",
+  origin:"http://127.0.0.1:3000",
   methods: ['GET', 'POST', 'PATCH', 'DELETE','PUT'],
   allowedHeaders: ['Content-Type', 'Authorization', 'startdate', 'enddate'],
   credentials: true,
