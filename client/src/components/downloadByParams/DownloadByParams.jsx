@@ -25,7 +25,8 @@ export default function DownloadByParams({ searchParams, filteredTicketsByParams
                     body: JSON.stringify({
                         startDate: startDate !== null ? startDate : 'No Start Date has been Mentioned',
                         endDate: endDate !== null ? endDate : 'No Start Date has been Mentioned',
-                        searchParams : filteredTicketsByParams.length > 0 && searchParams,
+                        // searchParams : filteredTicketsByParams.length > 0 ? searchParams : 'No Parameters mentioned',
+                        searchParams : filteredTicketsByParams === null ? 'No Parameters Mentioned' : (filteredTicketsByParams.length > 0 && searchParams),
                         filteredTicketsByParams: filteredTicketsByParams
                     }),
                 }

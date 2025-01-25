@@ -91,18 +91,16 @@ export default function AdminTicketHistory() {
 
     const displayTicketsByDate = (tickets) => {
         const sortedByDateTickets = [...tickets].sort((a, b) => {
-            const [yearA, monthA, dayA] = a.dateRaised.split("-").map(Number);
-            const [yearB, monthB, dayB] = b.dateRaised.split("-").map(Number);
-            const dateA = new Date(yearA, monthA - 1, dayA);
-            const dateB = new Date(yearB, monthB - 1, dayB);
-            if (dateA.getTime() === dateB.getTime()) {
-                // the _id field in the is set in such a way that first few characters record when the ticket was raised
-                return b._id.localeCompare(a._id);
+            const dateA = new Date(a.dateRaised).getTime();
+            const dateB = new Date(b.dateRaised).getTime();
+            if (dateA === dateB) {
+                return b._id.localeCompare(a._id); 
             }
-            return dateB - dateA;
+            return dateB - dateA; 
         });
         return sortedByDateTickets.slice(indexOfFirstTicket, indexOfLastTicket);
     };
+    
 
     const handleReferenceComment = (ticketId, referenceComment) => {
         setGetTickets(prevTickets =>

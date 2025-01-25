@@ -30,6 +30,10 @@ const reverseTickets = (tickets) => {
     return reversedTickets;
 };
 
+const sortTicketsByDate = (tickets) => {
+    return tickets.slice().sort((a, b) => new Date(b.dateRaised) - new Date(a.dateRaised));
+};
+
 const formatDate_dd_mm_yyyy = (inputDate) => {
     const date = new Date(inputDate);
     const day = String(date.getDate()).padStart(2, '0');
@@ -40,7 +44,7 @@ const formatDate_dd_mm_yyyy = (inputDate) => {
 
 const TicketsTable = ({ tickets, searchParams, setFilteredTicketsByParams }) => {
         const filteredTickets = useMemo(() => {
-            return reverseTickets(tickets).filter((ticket) => {
+            return sortTicketsByDate(tickets).filter((ticket) => {
                 const searchValue = searchParams.toLowerCase();
                 return (
                     ticket?.raisedBy?.name?.toLowerCase().includes(searchValue) ||
@@ -102,7 +106,7 @@ const TicketsTable = ({ tickets, searchParams, setFilteredTicketsByParams }) => 
                                             {(ticket.status === "inactive") ? ((ticket.raisedBy !== null && ticket.raisedBy.deleted) ? "User Deleted" : "User Active") : "User Active"}
                                         </td>
                                         <td>{ticket.status}</td>
-                                        <td>{(ticket.referenceComment === null || ticket.referenceComment === "") ? "No reference comment has been added yet..." : ticket.referenceComment}</td>
+                                        <td>{(ticket.referenceComment === null || ticket.referenceComment === "") ? "No reference comment has been added yet..." : ticket.referenceComment.substring(0,50)+'...'}</td>
                                         <td>{ticket.dateResolved === null ? 'Not resolved' : formatDate_dd_mm_yyyy(ticket.dateResolved)}</td>
                                         {
                                             ticket.raisedBy && (
@@ -204,7 +208,6 @@ const AdminPreviewAllTickets = () => {
                 )
                 const data = await response.json()
                 if (response.ok) {
-                    //console.log(data.tickets)
                     setMessage('Loading...')
                     setGetTickets(data.tickets)
                 } else {
@@ -222,6 +225,8 @@ const AdminPreviewAllTickets = () => {
 
     useEffect(() => {
         const fetchSelectedTickets = async (startDate, endDate) => {
+            if (!startDate || !endDate) return;
+    
             try {
                 const response = await fetch(
                     `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/preview-by-date?startDate=${startDate}&endDate=${endDate}`,
@@ -229,45 +234,28 @@ const AdminPreviewAllTickets = () => {
                         method: 'GET',
                         headers: {
                             Authorization: authToken,
-                            startDate: startDate,
-                            endDate: endDate
-                        }
+                        },
                     }
-                )
-                const data = await response.json()
+                );
+    
+                const data = await response.json();
+    
                 if (response.ok) {
-                    //console.log(data.tickets)
-                    setMessage('Loading...')
-                    setGetSelectedTickets(data.tickets)
+                    setMessage('Loading...');
+                    setGetSelectedTickets(data.tickets);
+                } else {
+                    setMessage(data.message || 'Error fetching data');
                 }
-                else if (response.status === 400) {
-                    alert(data.message)
-                    handleTickets()
-                }
-                else if (response.status === 404) {
-                    //alert(data.message)
-                    //console.log(data.message)
-                    setGetSelectedTickets([])
-                    setMessage(data.message)
-                }
-                else {
-                    //const errorData = await response.json();
-                    setMessage(data.message)
-                }
+            } catch (err) {
+                alert('Error fetching tickets: ' + err.message);
+                console.error('Error fetching tickets:', err);
             }
-            catch (err) {
-                if (err.status === 404) {
-                    alert('Date not found')
-                    handleTickets()
-                }
-                alert(err.message)
-                console.error("Error fetching tickets:", err);
-            }
-        }
+        };
+    
         if (startDate && endDate) {
-            fetchSelectedTickets(startDate, endDate)
+            fetchSelectedTickets(startDate, endDate);
         }
-    }, [authToken, startDate, endDate])
+    }, [authToken, startDate, endDate]);    
 
     const handleStartDateChange = (event) => {
         const selectedStartDate = event.target.value;

@@ -115,10 +115,14 @@ export default function AdminModalDownload() {
                         Authorization: authToken,
                         "Content-Type": "application/json",
                     },
+                    // body: JSON.stringify({
+                    //     startDate: startDate,
+                    //     endDate: endDate,
+                    // }),
                     body: JSON.stringify({
-                        startDate: startDate,
-                        endDate: endDate,
-                    }),
+                        startDate: new Date(startDate).toISOString(),
+                        endDate: new Date(endDate).toISOString(),
+                      }),
                 }
             );
             // Check if the response status is OK (2xx)
@@ -129,6 +133,8 @@ export default function AdminModalDownload() {
                 link.href = window.URL.createObjectURL(blob);
                 link.download = `all_admin_tickets.csv`;
                 link.click();
+                // const data = await response.json()
+                // console.log(data.tickets)
             } else {
                 const errorData = await response.json();
                 alert(errorData.error);
@@ -138,6 +144,34 @@ export default function AdminModalDownload() {
             console.error("Error downloading tickets:", err);
         }
     };
+
+    const downloadTestAdminTickets = async () => {
+        try {
+          const response = await fetch(
+            `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/download-admin-tickets`,
+            {
+              method: 'GET',
+              headers: {
+                Authorization: authToken,
+              },
+            }
+          );
+      
+          if (response.ok) {
+            const blob = await response.blob();
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'admin_tickets.csv';
+            link.click();
+          } else {
+            const errorData = await response.json();
+            alert(errorData.message);
+          }
+        } catch (error) {
+          console.error('Error downloading tickets:', error);
+        }
+      };
+      
 
     return (
         <>
@@ -195,9 +229,13 @@ export default function AdminModalDownload() {
                                     <div className="divider">
                                         <span>OR</span>
                                     </div>
-                                    <div className='download-specific-button-navbar' onClick={() => downloadAllAdminTickets()}>
+                                    {/* <div className='download-specific-button-navbar' onClick={() => downloadAllAdminTickets()}>
                                         <FontAwesomeIcon style={{ padding: '0 10px' }} size='xl' icon={faFileDownload} />
                                         Download Your Tickets
+                                    </div> */}
+                                    <div className='download-specific-button-navbar' onClick={() => downloadTestAdminTickets()}>
+                                        <FontAwesomeIcon style={{ padding: '0 10px' }} size='xl' icon={faFileDownload} />
+                                        Download Your Test Tickets
                                     </div>
                                 </div>
                             </ModalContent>

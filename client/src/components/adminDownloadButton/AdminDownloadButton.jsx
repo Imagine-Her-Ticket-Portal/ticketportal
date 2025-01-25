@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styled from "styled-components";
 import { useModal } from '../../modalProvider/Modalprovider'
 import ModalBox from '../ModalBox/ModalBox.tsx'
@@ -7,6 +7,7 @@ import useModalToggle from '../ModalBox/useModalToggle.tsx'
 import './AdminDownloadButton.scss'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt, faCircleXmark, faArrowDown, faFileDownload } from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 
 const ModalContent = styled.div`
@@ -27,6 +28,9 @@ const ModalContent = styled.div`
   }
 `;
 
+const sortTicketsByDate = (tickets) => {
+    return tickets.slice().sort((a, b) => new Date(b.dateRaised) - new Date(a.dateRaised));
+};
 
 export default function AdminDownloadButton() {
     const [startDate, setStartDate] = useState('');
@@ -35,40 +39,42 @@ export default function AdminDownloadButton() {
     const authToken = localStorage.getItem("authorization")
     const { isOpen, toggle } = useModalToggle();
     const modalRef = useRef();
+    const [getTickets, setGetTickets] = useState([]);
+    const [adminTickets, setAdminTickets] = useState([]);
+    const [message, setMessage] = useState('')
+    const location = useLocation()
 
-    const downloadTickets = async (startDate, endDate) => {
-        try {
-            const response = await fetch(
-                `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/download`,
-                {
-                    method: "POST",
-                    headers: {
-                        Authorization: authToken,
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        startDate: startDate,
-                        endDate: endDate,
-                    }),
+        useEffect(() => {
+                const fetchTickets = async () => {
+                    try {
+                        const response = await fetch(
+                            `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/all-tickets`,
+                            {
+                                method: "GET",
+                                headers: {
+                                    Authorization: authToken,
+                                },
+                            }
+                        )
+                        const data = await response.json()
+                        if (response.ok) {
+                            //console.log(data.tickets)
+                            setMessage('Loading...')
+                            const newTickets = data.tickets.filter(ticket =>
+                                ticket.assignedTo !== null && ticket.assignedTo.name === user.name
+                            )
+                            setGetTickets(newTickets)
+                        } else {
+                            const errorData = await response.json();
+                            throw new Error(`Failed to fetch tickets: ${errorData.message}`);
+                        }
+                    }
+                    catch (err) {
+                        console.error("Error fetching tickets:", err);
+                    }
                 }
-            );
-            // Check if the response status is OK (2xx)
-            if (response.ok) {
-                const blob = await response.blob();
-                // Create a link element and trigger a download
-                const link = document.createElement('a');
-                link.href = window.URL.createObjectURL(blob);
-                link.download = `tickets_${startDate}_${endDate}.csv`;
-                link.click();
-            } else {
-                const errorData = await response.json();
-                alert(errorData.error);
-                // toast.error(errorData.error || "An error occurred!");
-            }
-        } catch (err) {
-            console.error("Error downloading tickets:", err);
-        }
-    };
+                fetchTickets()
+            }, [authToken])
 
     const downloadAllTickets = async () => {
         try {
@@ -105,37 +111,37 @@ export default function AdminDownloadButton() {
         }
     };
 
-    const downloadAllAdminTickets = async () => {
+    const downloadAdminTickets = async () => {
+        if (getTickets.length === 0) {
+            alert('No tickets found for download.');
+            return;
+        }
+
         try {
             const response = await fetch(
-                `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/download-all-admin-tickets`,
+                `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/download-your-tickets`,
                 {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
                         Authorization: authToken,
-                        "Content-Type": "application/json",
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        startDate: startDate,
-                        endDate: endDate,
-                    }),
+                    body: JSON.stringify({ tickets: sortTicketsByDate(getTickets) }),
                 }
             );
-            // Check if the response status is OK (2xx)
+
             if (response.ok) {
                 const blob = await response.blob();
-                // Create a link element and trigger a download
                 const link = document.createElement('a');
                 link.href = window.URL.createObjectURL(blob);
-                link.download = `all_admin_tickets.csv`;
+                link.download = 'admin_tickets.csv';
                 link.click();
             } else {
                 const errorData = await response.json();
                 alert(errorData.error);
-                // toast.error(errorData.error || "An error occurred!");
             }
         } catch (err) {
-            console.error("Error downloading tickets:", err);
+            console.error('Error downloading tickets:', err);
         }
     };
 
@@ -185,7 +191,7 @@ export default function AdminDownloadButton() {
                                     <div className="divider">
                                         <span>OR</span>
                                     </div>
-                                    <div className='download-specific-button-navbar' onClick={() => downloadAllAdminTickets()}>
+                                    <div className='download-specific-button-navbar' onClick={()=>downloadAdminTickets()}>
                                         <FontAwesomeIcon style={{ padding: '0 10px' }} size='xl' icon={faFileDownload} />
                                         Download Your Tickets
                                     </div>

@@ -32,6 +32,10 @@ const reverseTickets = (tickets) => {
     return reversedTickets;
 };
 
+const sortTicketsByDate = (tickets) => {
+    return tickets.slice().sort((a, b) => new Date(b.dateRaised) - new Date(a.dateRaised));
+};
+
 const formatDate_dd_mm_yyyy = (inputDate) => {
     const date = new Date(inputDate);
     const day = String(date.getDate()).padStart(2, '0');
@@ -42,7 +46,7 @@ const formatDate_dd_mm_yyyy = (inputDate) => {
 
 const TicketsTable = ({ tickets, searchParams, setFilteredTicketsByParams }) => {
     const filteredTickets = useMemo(() => {
-        return reverseTickets(tickets).filter((ticket) => {
+        return sortTicketsByDate(tickets).filter((ticket) => {
             const searchValue = searchParams.toLowerCase();
             return (
                 ticket?.raisedBy?.name?.toLowerCase().includes(searchValue) ||
@@ -216,7 +220,6 @@ const AdminSpecificPreviewTickets = () => {
                 )
                 const data = await response.json()
                 if (response.ok) {
-                    //console.log(data.tickets)
                     setMessage('Loading...')
                     setGetTickets(data.tickets)
                 } else {
@@ -234,6 +237,7 @@ const AdminSpecificPreviewTickets = () => {
 
     useEffect(() => {
         const fetchSelectedTickets = async (startDate, endDate) => {
+            if (!startDate || !endDate) return;
             try {
                 const response = await fetch(
                     `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/preview-by-date?startDate=${startDate}&endDate=${endDate}`,
@@ -251,9 +255,7 @@ const AdminSpecificPreviewTickets = () => {
                 }
                 const data = await response.json()
                 if (response.ok) {
-                    //console.log(data.tickets)
                     setMessage('Loading...')
-                    //setGetSelectedTickets(data.tickets)
                     const filteredTickets = data.tickets.filter(ticket =>
                         ticket.assignedTo !== null && ticket.assignedTo.name === user.name
                     )

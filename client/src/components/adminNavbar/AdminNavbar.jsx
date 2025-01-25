@@ -77,7 +77,7 @@ function AdminNavbar() {
                     </button> */}
                     <AdminDownloadButton />
                     <div className="download-icon">
-                        <AdminModalDownload />
+                        {/* <AdminModalDownload /> */}
                     </div>
                 </div>
             </nav>
