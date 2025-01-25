@@ -61,26 +61,6 @@ function App() {
             </Route>
           </Route>
           <Route element={<ProtectedRoutes />}>
-            {/* <Route path="/admin/requests" element={<Admin recent={true} />}></Route>
-            <Route path='/admin/analytics' element={<AdminAnalyticsPage />} />
-            <Route path='/admin/ticket-history' element={<AdminTicketHistoryPage />} />
-            <Route path='/admin/profile' element={<AdminProfilePage />} />
-            <Route path='/admin/services' element={<AdminServicesPage />} />
-            <Route path="/admin/get-help" element={<AdminGetHelpPage />} />
-            <Route path="/admin/business-updates" element={<AdminBusinessUpdatesPage />} /> */}
-            {/* <Route path="/admin/business-strategy" element={<Admin cat="BUSINESS STRATEGY" catmain="GET HELP" />}></Route>
-            <Route path="/admin/marketing" element={<Admin cat="MARKETING" catmain="GET HELP" />}></Route>
-            <Route path="/admin/marketing/business_updates" element={<Admin cat="MARKETING" catmain="BUSINESS UPDATES" />}></Route>
-            <Route path="/admin/financial-management" element={<Admin cat="FINANCIAL MANAGEMENT" catmain="GET HELP" />}></Route>
-            <Route path="/admin/technical-support" element={<Admin cat="TECHNICAL SUPPORT" catmain="GET HELP" />}></Route>
-            <Route path="/admin/operation&logistics" element={<Admin cat="OPERATION & LOGISTICS" catmain="GET HELP" />}></Route>
-            <Route path="/admin/others" element={<Admin cat="OTHERS" catmain="GET HELP" />}></Route>
-            <Route path="/admin/others/business_updates" element={<Admin cat="OTHERS" catmain="BUSINESS UPDATES" />}></Route>
-            <Route path="/admin/expansion-of-business" element={<Admin cat="EXPANSION OF BUSINESS" catmain="BUSINESS UPDATES" />}></Route>
-            <Route path="/admin/revenue" element={<Admin cat="REVENUE" catmain="BUSINESS UPDATES" />}></Route> */}
-            {/* <Route path="/admin/requests" element={<Admin recent={true} />}></Route>
-            <Route path="/admin/ticket-history/requests" element={<TicketRequests profile="true" admin={true} />}></Route> */}
-            {/* <Route path="/admin/analytics" element={<AnalyticsPage />}></Route> */}
             <Route path="/admin/ticket-history/requests" element={<TicketRequests profile="true" admin={true} />}></Route>
           </Route>
           {/* <Route path="/ticket-history/requests" element={<TicketRequests profile="true" admin={false} />}></Route> */}
