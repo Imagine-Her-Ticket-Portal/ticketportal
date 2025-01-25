@@ -42,7 +42,7 @@ const TicketSchema = new mongoose.Schema({
     required: true,
   },
   dateRaised: {
-    type: String,
+    type: Date,
     required: true,
   },
   dateResolved: {

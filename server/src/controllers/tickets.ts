@@ -1,5 +1,6 @@
 
 import { Request, Response } from "express";
+import mongoose from "mongoose";
 import Users from "../models/Users";
 import Admins from "../models/Admins";
 import Tickets from "../models/Tickets";
@@ -42,19 +43,6 @@ export const getUser = async (req: Request, res: Response) => {
     console.log(err);
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const raiseTicket = async (req: Request, res: Response) => {
   try {
@@ -108,15 +96,6 @@ export const raiseTicket = async (req: Request, res: Response) => {
       .json({ message: "Internal server error while raising Ticket" });
   }
 };
-
-
-
-
-
-
-
-
-
 
 
 // admin specific routes
@@ -402,21 +381,40 @@ export const downloadTickets = async (req: Request, res: Response) => {
           dateRaised,
           status,
           referenceComment,
+          dateResolved,
           raisedBy,
           assignedTo,
         } = ticket;
 
+        // const raisedByUser = raisedBy ? await Users.findById(raisedBy) : null;
+        // const assignedToUser = assignedTo ? await Admins.findById(assignedTo) : null;
+
         const raisedByUser = raisedBy ? await Users.findById(raisedBy) : null;
+        const raisedByName = raisedByUser ? raisedByUser.name : '';
+        const raisedByEmail = raisedByUser ? raisedByUser.email : '';
+
         const assignedToUser = assignedTo ? await Admins.findById(assignedTo) : null;
+        const assignedToName = assignedToUser ? assignedToUser.name : '';
+        const assignedToEmail = assignedToUser ? assignedToUser.email : '';
+
+        const referenceCommentText = (referenceComment === null || referenceComment === '') ? 'No reference comment has been added yet...' : referenceComment
+        const userBusinessName = (raisedByUser?.businessName !== null && raisedByUser?.businessName.length !== 0) ? raisedByUser?.businessName : 'Not Added Yet'
+        const userStatus = (status === "inactive") ? ((raisedByUser !== null && raisedByUser.deleted) && "User Deleted") : "User Active"
+
+        const location = raisedByUser&& raisedByUser.location;
 
         return {
           _id,
           category,
           'Sub category': title,
           message,
+          'Location' : location,
           dateRaised,
-          status,
-          referenceComment: referenceComment || 'No reference comment has been added yet...',
+          'User Status': userStatus,
+          'Ticket Status': status,
+          referenceCommentText,
+          //referenceComment: referenceComment || 'No reference comment has been added yet...',
+          'Date Resolved': dateResolved,
           raisedByName: raisedByUser?.name || '',
           raisedByEmail: raisedByUser?.email || '',
           userBusinessName: raisedByUser?.businessName || 'Not Added Yet',
@@ -474,6 +472,7 @@ export const adminSpecificDownloadTickets = async (req: Request, res: Response) 
           dateRaised,
           status,
           referenceComment,
+          dateResolved,
           raisedBy,
           assignedTo,
         } = ticket.toJSON();
@@ -488,15 +487,21 @@ export const adminSpecificDownloadTickets = async (req: Request, res: Response) 
 
         const referenceCommentText = (referenceComment === null || referenceComment === '') ? 'No reference comment has been added yet...' : referenceComment
         const userBusinessName = (raisedByUser?.businessName !== null && raisedByUser?.businessName.length !== 0) ? raisedByUser?.businessName : 'Not Added Yet'
+        const userStatus = (status === "inactive") ? ((raisedByUser !== null && raisedByUser.deleted) && "User Deleted") : "User Active"
+
+        const location = raisedByUser&& raisedByUser.location;
 
         return {
           _id,
           category,
           'Sub category': title,
           message,
+          'Location' : location,
           dateRaised,
-          status,
+          'User Status': userStatus,
+          'Ticket Status': status,
           referenceCommentText,
+          'Date Resolved': dateResolved,
           raisedBy: raisedByName,
           raisedByEmail,
           'Business Name': userBusinessName,
@@ -520,17 +525,24 @@ export const adminSpecificDownloadTickets = async (req: Request, res: Response) 
 
 export const downloadAllAdminTickets = async (req: Request, res: Response) => {
   const userRole = req.body.user?.role;
-  const adminName = req.body.user.name;
-  const adminId = req.body.user.id;
+  const adminName = req.body.user?.name;
+  const adminId = req.body.user?._id;
 
   if (!userRole || userRole !== 'admin') {
     return res.status(403).json({ message: 'Unauthorized' });
   }
 
   try {
+    const startDate = String(req.body.startDate)
+    const endDate = String(req.body.endDate)
+
     const tickets = await Tickets.find({
       assignedTo: adminId
-    }).populate("raisedBy").populate("assignedTo")
+    }).populate("raisedBy").populate("assignedTo");
+
+    if (tickets.length === 0) {
+      return res.status(404).json({ message: 'No tickets found within the specified date range.' });
+    }
 
     // Map tickets to exclude _doc and other Mongoose properties
     const cleanTickets = await Promise.all(
@@ -543,6 +555,7 @@ export const downloadAllAdminTickets = async (req: Request, res: Response) => {
           dateRaised,
           status,
           referenceComment,
+          dateResolved,
           raisedBy,
           assignedTo,
         } = ticket.toJSON();
@@ -557,8 +570,9 @@ export const downloadAllAdminTickets = async (req: Request, res: Response) => {
 
         const referenceCommentText = (referenceComment === null || referenceComment === '') ? 'No reference comment has been added yet...' : referenceComment
         const userBusinessName = (raisedByUser?.businessName !== null && raisedByUser?.businessName.length !== 0) ? raisedByUser?.businessName : 'Not Added Yet'
+        const userStatus = (status === "inactive") ? ((raisedByUser !== null && raisedByUser.deleted) && "User Deleted") : "User Active"
 
-        const location = raisedByUser && raisedByUser.location;
+        const location = raisedByUser&& raisedByUser.location;
 
         return {
           _id,
@@ -567,8 +581,10 @@ export const downloadAllAdminTickets = async (req: Request, res: Response) => {
           message,
           'Location' : location,
           dateRaised,
-          status,
+          'User Status': userStatus,
+          'Ticket Status': status,
           referenceCommentText,
+          'Date Resolved': dateResolved,
           raisedBy: raisedByName,
           raisedByEmail,
           'Business Name': userBusinessName,
@@ -577,9 +593,9 @@ export const downloadAllAdminTickets = async (req: Request, res: Response) => {
         };
       })
     );
-
+    res.status(200).json({tickets:cleanTickets})
     const csv = await parseAsync(cleanTickets);
-
+    // console.log(cleanTickets)
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', `attachment; filename=all_admin_tickets.csv`);
 
@@ -613,36 +629,47 @@ export const getAllTickets = async (req: Request, res: Response) => {
 
 export const getSelectedTickets = async (req: Request, res: Response) => {
   const userRole = req.body.user?.role;
+
   const startDate = String(req.query.startDate);
   const endDate = String(req.query.endDate);
 
-  if (!userRole || userRole !== 'admin') {
-    return res.status(403).json({ message: 'Unauthorized' });
+  if (!userRole || userRole !== "admin") {
+    return res.status(403).json({ message: "Unauthorized" });
   }
 
   if (!startDate || !endDate) {
-    return res.status(400).json({ message: 'Start date and end date are required' });
+    return res
+      .status(400)
+      .json({ message: "Start date and end date are required" });
   }
 
-
   try {
-    if (new Date(startDate) > new Date(endDate)) {
-      return res.status(400).json({ message: 'Start date should be smaller than End date' });
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    end.setUTCHours(23, 59, 59, 999); // Adjust endDate to the end of the day
+
+    if (start > end) {
+      return res
+        .status(400)
+        .json({ message: "Start date should be earlier than End date" });
     }
 
     const selectedTickets = await Tickets.find({
-      dateRaised: { $gte: startDate, $lte: endDate },
+      dateRaised: { $gte: start, $lte: end },
     }).populate("raisedBy").populate("assignedTo");
 
-    if (selectedTickets.length === 0) {
-      return res.status(404).json({ message: 'No tickets found within the specified date range.' });
+    if (!selectedTickets || selectedTickets.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No tickets found within the specified date range." });
     }
-    res.status(200).json({ tickets: selectedTickets });
-  }
 
-  catch (err) {
+    res.status(200).json({ tickets: selectedTickets });
+  } catch (err) {
     console.error("Error fetching tickets:", err);
-    res.status(500).json({ message: "Internal server error while fetching tickets" });
+    res
+      .status(500)
+      .json({ message: "Internal server error while fetching tickets" });
   }
 };
 
@@ -663,5 +690,68 @@ export const deleteTicket = async (req: Request, res: Response) => {
     console.error("Error during ticket deletion:", error);
     console.log(error)
     res.status(500).json({ message: "Failed to delete ticket.", error });
+  }
+};
+
+
+export const downloadYourTickets = async (req: Request, res: Response) => {
+  const userRole = req.body.user?.role;
+
+  // Validate user role
+  if (!userRole || userRole !== 'admin') {
+      return res.status(403).json({ message: 'Unauthorized' });
+  }
+
+  const tickets = req.body.tickets; // Tickets array from the frontend
+  if (!tickets || tickets.length === 0) {
+      return res.status(400).json({ message: 'No tickets provided for download.' });
+  }
+
+  try {
+      // Process tickets
+      const cleanTickets = tickets.map((ticket: any) => {
+          const {
+              _id,
+              category,
+              title,
+              message,
+              location,
+              dateRaised,
+              status,
+              referenceComment,
+              dateResolved,
+              raisedBy,
+              assignedTo,
+          } = ticket;
+
+          return {
+              ID: _id || 'N/A',
+              Category: category || 'N/A',
+              'Sub Category': title || 'N/A',
+              Message: message || 'N/A',
+              Location : location || 'N/A',
+              'Date Raised': dateRaised ? new Date(dateRaised).toISOString() : 'Not Available',
+              'User Status': status === 'inactive' ? 'User Deleted' : 'User Active',
+              'Ticket Status': status || 'N/A',
+              'Reference Comment': referenceComment || 'No reference comment added yet',
+              'Date Resolved': dateResolved ? new Date(dateResolved).toISOString() : 'Not Resolved',
+              'Raised By': raisedBy?.name || 'N/A',
+              'Raised By Email': raisedBy?.email || 'N/A',
+              'Business Name': raisedBy?.businessName || 'Not Added Yet',
+              'Assigned To': assignedTo?.name || 'N/A',
+              'Assigned To Email': assignedTo?.email || 'N/A',
+          };
+      });
+
+      // Generate CSV
+      const csv = await parseAsync(cleanTickets);
+
+      // Send CSV response
+      res.setHeader('Content-Type', 'text/csv');
+      res.setHeader('Content-Disposition', 'attachment; filename=admin_tickets.csv');
+      return res.status(200).send(csv);
+  } catch (error) {
+      console.error('Error generating CSV:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
   }
 };

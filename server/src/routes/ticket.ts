@@ -12,7 +12,8 @@ import {
   updateReferenceComment,
   editReferenceComment,
   downloadAllAdminTickets,
-  deleteTicket
+  deleteTicket,
+  downloadYourTickets
 } from "../controllers/tickets";
 
 const ticketRouter = Router();
@@ -45,6 +46,8 @@ ticketRouter.put("/reference-comment", updateReferenceComment)
 ticketRouter.patch("/edit-comment", editReferenceComment)
 
 ticketRouter.patch('/delete/:ticketID', deleteTicket);
+
+ticketRouter.post("/download-your-tickets", downloadYourTickets)
 
 
 export default ticketRouter;
