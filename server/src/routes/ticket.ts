@@ -27,6 +27,8 @@ ticketRouter.get("/recent", getRecentTickets);
 
 ticketRouter.put("/update", updateTicketStatus);
 
+ticketRouter.post("/download-your-tickets", downloadYourTickets)
+
 ticketRouter.post("/raise", raiseTicket);
 
 ticketRouter.post("/download", downloadTickets);
@@ -46,8 +48,5 @@ ticketRouter.put("/reference-comment", updateReferenceComment)
 ticketRouter.patch("/edit-comment", editReferenceComment)
 
 ticketRouter.patch('/delete/:ticketID', deleteTicket);
-
-ticketRouter.post("/download-your-tickets", downloadYourTickets)
-
 
 export default ticketRouter;

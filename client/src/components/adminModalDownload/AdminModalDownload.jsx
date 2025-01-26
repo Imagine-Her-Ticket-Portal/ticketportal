@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styled from "styled-components";
 import { useModal } from '../../modalProvider/Modalprovider'
 import ModalBox from '../ModalBox/ModalBox.tsx'
@@ -31,10 +31,50 @@ const ModalContent = styled.div`
 export default function AdminModalDownload() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [getTickets, setGetTickets] = useState([])
+    const [adminTickets, setAdminTickets] = useState([])
     const { isAuthenticated, user } = useModal();
     const authToken = localStorage.getItem("authorization")
     const { isOpen, toggle } = useModalToggle();
     const modalRef = useRef();
+
+    useEffect(() => {
+        const fetchTickets = async () => {
+            try {
+                const response = await fetch(
+                    `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/all-tickets`,
+                    {
+                        method: "GET",
+                        headers: {
+                            Authorization: authToken,
+                        },
+                    }
+                )
+                const data = await response.json()
+                if (response.ok) {
+                    setGetTickets(data.tickets)
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(`Failed to fetch tickets: ${errorData.message}`);
+                }
+            }
+            catch (err) {
+                console.error("Error fetching tickets:", err);
+            }
+        }
+        fetchTickets()
+    }, [authToken])
+
+    const handleAdminTickets = () => {
+        const filteredTickets = getTickets.filter(ticket =>
+            ticket.assignedTo !== null && ticket.assignedTo.name === user.name
+        );
+        setAdminTickets(filteredTickets)
+    }
+
+    useEffect(() => {
+        handleAdminTickets()
+    }, [getTickets])
 
     const downloadTickets = async (startDate, endDate) => {
         try {
@@ -122,7 +162,7 @@ export default function AdminModalDownload() {
                     body: JSON.stringify({
                         startDate: new Date(startDate).toISOString(),
                         endDate: new Date(endDate).toISOString(),
-                      }),
+                    }),
                 }
             );
             // Check if the response status is OK (2xx)
@@ -147,31 +187,36 @@ export default function AdminModalDownload() {
 
     const downloadTestAdminTickets = async () => {
         try {
-          const response = await fetch(
-            `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/download-admin-tickets`,
-            {
-              method: 'GET',
-              headers: {
-                Authorization: authToken,
-              },
+            console.log('Admin Tickets:', adminTickets); // Log the tickets array before sending it
+    
+            const response = await fetch(
+                `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/download-your-tickets`,
+                {
+                    method: 'POST',
+                    headers: {
+                        Authorization: authToken,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ tickets: adminTickets }), // Sending tickets correctly
+                }
+            );
+    
+            if (response.ok) {
+                const blob = await response.blob();
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'admin_tickets.csv';
+                link.click();
+            } else {
+                const errorData = await response.json();
+                console.log(errorData.message);
             }
-          );
-      
-          if (response.ok) {
-            const blob = await response.blob();
-            const link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = 'admin_tickets.csv';
-            link.click();
-          } else {
-            const errorData = await response.json();
-            alert(errorData.message);
-          }
         } catch (error) {
-          console.error('Error downloading tickets:', error);
+            console.error('Error downloading tickets:', error);
         }
-      };
-      
+    };
+    
+
 
     return (
         <>
@@ -233,7 +278,7 @@ export default function AdminModalDownload() {
                                         <FontAwesomeIcon style={{ padding: '0 10px' }} size='xl' icon={faFileDownload} />
                                         Download Your Tickets
                                     </div> */}
-                                    <div className='download-specific-button-navbar' onClick={() => downloadTestAdminTickets()}>
+                                    <div className='download-specific-button-navbar' onClick={()=>downloadTestAdminTickets()}>
                                         <FontAwesomeIcon style={{ padding: '0 10px' }} size='xl' icon={faFileDownload} />
                                         Download Your Test Tickets
                                     </div>

@@ -84,6 +84,7 @@ const TicketsTable = ({ tickets, searchParams, setFilteredTicketsByParams }) => 
                                     <th>User Status</th>
                                     <th>Ticket Status</th>
                                     <th>Reference Comment</th>
+                                    <th>Reference Comment Author</th>
                                     <th>Date Resolved</th>
                                     <th>Raised By Name</th>
                                     <th>Raised By Email</th>
@@ -107,6 +108,7 @@ const TicketsTable = ({ tickets, searchParams, setFilteredTicketsByParams }) => 
                                         </td>
                                         <td>{ticket.status}</td>
                                         <td>{(ticket.referenceComment === null || ticket.referenceComment === "") ? "No reference comment has been added yet..." : ticket.referenceComment.substring(0,50)+'...'}</td>
+                                        <td>{(ticket.authorName!==null ? ticket.authorName : 'Author Not Mentioned')}</td>
                                         <td>{ticket.dateResolved === null ? 'Not resolved' : formatDate_dd_mm_yyyy(ticket.dateResolved)}</td>
                                         {
                                             ticket.raisedBy && (

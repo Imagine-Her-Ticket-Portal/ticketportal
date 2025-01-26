@@ -44,38 +44,78 @@ export default function AdminDownloadButton() {
     const [message, setMessage] = useState('')
     const location = useLocation()
 
+        // useEffect(() => {
+        //         const fetchTickets = async () => {
+        //             try {
+        //                 const response = await fetch(
+        //                     `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/all-tickets`,
+        //                     {
+        //                         method: "GET",
+        //                         headers: {
+        //                             Authorization: authToken,
+        //                         },
+        //                     }
+        //                 )
+        //                 const data = await response.json()
+        //                 if (response.ok) {
+        //                     //console.log(data.tickets)
+        //                     setMessage('Loading...')
+        //                     const newTickets = data.tickets.filter(ticket =>
+        //                         ticket.assignedTo !== null && ticket.assignedTo.name === user.name
+        //                     )
+        //                     setGetTickets(newTickets)
+        //                 } else {
+        //                     const errorData = await response.json();
+        //                     throw new Error(`Failed to fetch tickets: ${errorData.message}`);
+        //                 }
+        //             }
+        //             catch (err) {
+        //                 console.error("Error fetching tickets:", err);
+        //             }
+        //         }
+        //         fetchTickets()
+        //     }, [authToken])
+
+
         useEffect(() => {
-                const fetchTickets = async () => {
-                    try {
-                        const response = await fetch(
-                            `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/all-tickets`,
-                            {
-                                method: "GET",
-                                headers: {
-                                    Authorization: authToken,
-                                },
-                            }
-                        )
-                        const data = await response.json()
-                        if (response.ok) {
-                            //console.log(data.tickets)
-                            setMessage('Loading...')
-                            const newTickets = data.tickets.filter(ticket =>
-                                ticket.assignedTo !== null && ticket.assignedTo.name === user.name
-                            )
-                            setGetTickets(newTickets)
-                        } else {
-                            const errorData = await response.json();
-                            throw new Error(`Failed to fetch tickets: ${errorData.message}`);
+            const fetchTickets = async () => {
+                try {
+                    const response = await fetch(
+                        `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/all-tickets`,
+                        {
+                            method: "GET",
+                            headers: {
+                                Authorization: authToken,
+                            },
                         }
-                    }
-                    catch (err) {
-                        console.error("Error fetching tickets:", err);
+                    )
+                    const data = await response.json()
+                    if (response.ok) {
+                        setGetTickets(data.tickets)
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(`Failed to fetch tickets: ${errorData.message}`);
                     }
                 }
-                fetchTickets()
-            }, [authToken])
+                catch (err) {
+                    console.error("Error fetching tickets:", err);
+                }
+            }
+            fetchTickets()
+        }, [authToken])
 
+        const handleAdminTickets = () => {
+            const filteredTickets = getTickets.filter(ticket =>
+                ticket.assignedTo !== null && ticket.assignedTo.name === user.name
+            );
+            setAdminTickets(filteredTickets)
+        }
+    
+        useEffect(() => {
+            handleAdminTickets()
+        }, [getTickets])
+    
+    
     const downloadAllTickets = async () => {
         try {
             const response = await fetch(
@@ -112,11 +152,6 @@ export default function AdminDownloadButton() {
     };
 
     const downloadAdminTickets = async () => {
-        if (getTickets.length === 0) {
-            alert('No tickets found for download.');
-            return;
-        }
-
         try {
             const response = await fetch(
                 `${process.env.REACT_APP_BACKEND_BASE_URL}/ticket/download-your-tickets`,
@@ -124,12 +159,12 @@ export default function AdminDownloadButton() {
                     method: 'POST',
                     headers: {
                         Authorization: authToken,
-                        'Content-Type': 'application/json',
+                        "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ tickets: sortTicketsByDate(getTickets) }),
+                    body: JSON.stringify({ tickets: adminTickets }), // Sending tickets correctly
                 }
             );
-
+    
             if (response.ok) {
                 const blob = await response.blob();
                 const link = document.createElement('a');
@@ -138,13 +173,13 @@ export default function AdminDownloadButton() {
                 link.click();
             } else {
                 const errorData = await response.json();
-                alert(errorData.error);
+                console.log(errorData.message);
             }
-        } catch (err) {
-            console.error('Error downloading tickets:', err);
+        } catch (error) {
+            console.error('Error downloading tickets:', error);
         }
     };
-
+    
     return (
         <>
             {
@@ -193,7 +228,7 @@ export default function AdminDownloadButton() {
                                     </div>
                                     <div className='download-specific-button-navbar' onClick={()=>downloadAdminTickets()}>
                                         <FontAwesomeIcon style={{ padding: '0 10px' }} size='xl' icon={faFileDownload} />
-                                        Download Your Tickets
+                                        Download Your Admin Tickets
                                     </div>
                                 </div>
                             </ModalContent>

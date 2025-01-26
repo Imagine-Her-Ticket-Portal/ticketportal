@@ -302,6 +302,7 @@ export const downloadAllTickets = async (req: Request, res: Response) => {
           dateRaised,
           status,
           referenceComment,
+          authorName,
           dateResolved,
           raisedBy,
           assignedTo,
@@ -333,6 +334,7 @@ export const downloadAllTickets = async (req: Request, res: Response) => {
           'User Status': userStatus,
           'Ticket Status': status,
           referenceCommentText,
+          'Reference Comment Author': authorName || 'Author Not Mentioned',
           'Date Resolved': dateResolved,
           raisedBy: raisedByName,
           raisedByEmail,
@@ -384,6 +386,7 @@ export const downloadTickets = async (req: Request, res: Response) => {
           dateRaised,
           status,
           referenceComment,
+          authorName,
           dateResolved,
           raisedBy,
           assignedTo,
@@ -416,6 +419,7 @@ export const downloadTickets = async (req: Request, res: Response) => {
           'User Status': userStatus,
           'Ticket Status': status,
           referenceCommentText,
+          'Reference Comment Author': authorName || 'Author Not Mentioned',
           //referenceComment: referenceComment || 'No reference comment has been added yet...',
           'Date Resolved': dateResolved,
           raisedByName: raisedByUser?.name || '',
@@ -475,6 +479,7 @@ export const adminSpecificDownloadTickets = async (req: Request, res: Response) 
           dateRaised,
           status,
           referenceComment,
+          authorName,
           dateResolved,
           raisedBy,
           assignedTo,
@@ -504,6 +509,7 @@ export const adminSpecificDownloadTickets = async (req: Request, res: Response) 
           'User Status': userStatus,
           'Ticket Status': status,
           referenceCommentText,
+          'Reference Comment Author': authorName || 'Author Not Mentioned',
           'Date Resolved': dateResolved,
           raisedBy: raisedByName,
           raisedByEmail,
@@ -558,6 +564,7 @@ export const downloadAllAdminTickets = async (req: Request, res: Response) => {
           dateRaised,
           status,
           referenceComment,
+          authorName,
           dateResolved,
           raisedBy,
           assignedTo,
@@ -587,6 +594,7 @@ export const downloadAllAdminTickets = async (req: Request, res: Response) => {
           'User Status': userStatus,
           'Ticket Status': status,
           referenceCommentText,
+          'Reference Comment Author': authorName || 'Author Not Mentioned',
           'Date Resolved': dateResolved,
           raisedBy: raisedByName,
           raisedByEmail,
@@ -700,12 +708,12 @@ export const deleteTicket = async (req: Request, res: Response) => {
 export const downloadYourTickets = async (req: Request, res: Response) => {
   const userRole = req.body.user?.role;
 
-  // Validate user role
   if (!userRole || userRole !== 'admin') {
       return res.status(403).json({ message: 'Unauthorized' });
   }
 
   const tickets = req.body.tickets; // Tickets array from the frontend
+  
   if (!tickets || tickets.length === 0) {
       return res.status(400).json({ message: 'No tickets provided for download.' });
   }
@@ -722,6 +730,7 @@ export const downloadYourTickets = async (req: Request, res: Response) => {
               dateRaised,
               status,
               referenceComment,
+              authorName,
               dateResolved,
               raisedBy,
               assignedTo,
@@ -737,6 +746,7 @@ export const downloadYourTickets = async (req: Request, res: Response) => {
               'User Status': status === 'inactive' ? 'User Deleted' : 'User Active',
               'Ticket Status': status || 'N/A',
               'Reference Comment': referenceComment || 'No reference comment added yet',
+              'Reference Comment Auhtor': authorName || 'Author Not Mentioned',
               'Date Resolved': dateResolved ? new Date(dateResolved).toISOString() : 'Not Resolved',
               'Raised By': raisedBy?.name || 'N/A',
               'Raised By Email': raisedBy?.email || 'N/A',
