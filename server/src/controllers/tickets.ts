@@ -111,14 +111,6 @@ export const raiseTicket = async (req: Request, res: Response) => {
 
 
 
-
-
-
-
-
-
-
-
 // admin specific routes
 export const getTickets = async (req: Request, res: Response) => {
   const userRole = req.body.user?.role;

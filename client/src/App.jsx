@@ -30,6 +30,8 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
           <Route path="/profile" element={<ProfileContainer />}></Route>
           <Route path="/ticket-history/requests" element={<TicketRequests profile="true" admin={false} />}></Route>
+
+
           <Route element={<ProtectedRoutes />}>
             <Route path='/admin'>
               <Route path="requests" element={<Admin recent={true} />}></Route>

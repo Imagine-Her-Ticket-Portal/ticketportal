@@ -43,6 +43,7 @@ export default function TicketRequestssection() {
         );
         const data = await response.json();
         if (response.ok) {
+          console.log(data.tickets);
           setGetTickets(data.tickets);
         } else {
           const errorData = await response.json();
@@ -156,11 +157,11 @@ export default function TicketRequestssection() {
     }
     setSortBy(false)
   };
-
+ 
   return (
     <div className="admin_section">
       <div className="tabs-container">
-        <span className="tabs-sub-heading"><span style={{ 'color': 'black' }}>TICKET</span> REQUESTS</span>
+        <span className="tabs-sub-heading"><span style={{ 'color': 'black' }}>hiii </span> REQUESTS</span>
         <div className="tabs">
           {
             user.role && user.role === "client" && (

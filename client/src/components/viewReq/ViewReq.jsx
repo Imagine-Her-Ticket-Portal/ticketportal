@@ -9,6 +9,9 @@ import { faCalendar, faAddressCard, faEnvelope, faCircleXmark, faUser, faU, faVe
 import Accordion from 'react-bootstrap/Accordion';
 import profile from "../../assets/profile.png";
 import "./viewReq.css";
+import { useNavigate } from 'react-router-dom';
+
+
 // import { toast } from 'react-toastify';
 
 // const CustomModal = styled(Modal)`
@@ -53,6 +56,7 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [assignedTo, setAssignedTo] = useState(null)
   const [raisedBy, setRaisedBy] = useState('')
+   const navigate = useNavigate();
 
   const { isOpen, toggle } = useModalToggle();
 
@@ -231,13 +235,18 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
     }
   };
   
+
   return (
     <>
       <div className="container2-req" onClick={toggle}>
         <div className="view-button">View</div>
       </div>
 
-      <ModalBox
+      {/* <div className="container2-req" onClick={handleTicketsPage}>
+        <div className="view-button">View</div>
+      </div> */}
+
+      {/* <ModalBox
         isOpen={isOpen}
         toggle={toggle}
         closeModal={closeModal}
@@ -540,7 +549,315 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
             }
           </div>
         </ModalContent>
-      </ModalBox>
+      </ModalBox> */}
+
+
+
+
+
+
+
+
+
+
+<div className={`sheet ${isOpen ? "open" : ""}`} onClick={closeModal}>
+        <div className="sheet-content" onClick={(e) => e.stopPropagation()}>
+          
+
+        <div>
+            <div className='row ticket-popup-icons'>
+              <div className='col delete-icon col-sm-6'><FontAwesomeIcon style={{ color: '#D81F84' }}  onClick={deleteTicket} icon={faTrash} /></div>
+              <div className='col cross-icon col-sm-6'><FontAwesomeIcon  onClick={toggle} icon={faCircleXmark} /></div>
+            </div>
+          </div>
+          <div className="user-details">
+            <div className="profile-pic">
+              <div className="user-deatils">
+                {user && user.role === "client" ? <>
+                  <div className='row details-client'>
+                    <div className='details-heading-client col-lg-3 col-md-3 col-sm-12'>
+                      <p>User Details :</p>
+                    </div>
+                    <div className='col-lg-9 col-md-9 col-sm-12'>
+                      <div className='row'>
+                        <div>
+                          <span>
+                            <FontAwesomeIcon className='details-description-icon-client detail-icons' size="lg" icon={faAddressCard} />
+                            <span style={{ textTransform: 'capitalize', color: 'black' }}>{user.name}</span>
+                          </span>
+                        </div>
+                        <div className='details-description-email'>
+                          <span>
+                            <FontAwesomeIcon className='details-description-icon-client detail-icons' size="lg" icon={faEnvelope} />
+                            <span style={{ color: 'black' }}>{user.email}</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </> : <>
+                  <div className='row details'>
+                    <div className='details-heading col-lg-3 col-md-3 col-sm-12'>
+                      <p>Raised By :</p>
+                    </div>
+                    <div className='col-lg-9 col-md-9 col-sm-12'>
+                      <div className='row'>
+                        <div>
+                          <span>
+                            <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faAddressCard} />
+                            <span style={{ textTransform: 'capitalize', color: 'black' }}>{ticket.raisedBy.name}</span>
+                          </span>
+                        </div>
+                        <div className='details-description-email'>
+                          <span>
+                            <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faEnvelope} />
+                            <span style={{ color: 'black' }}>{ticket.raisedBy.email}</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {ticket.status && ticket.status === "inreview" && ticket.assignedTo && (
+                    <div className='row details'>
+                      <div className='details-heading col-lg-3 col-md-3 col-sm-12'>
+                        <p>Assigned To :</p>
+                      </div>
+                      <div className='col-lg-9 col-md-9 col-sm-12'>
+                        <div className='row'>
+                          <div>
+                            <span>
+                              <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faUser} />
+                              <span style={{ textTransform: 'capitalize', color: 'black' }}>{ticket.assignedTo.name}</span>
+                            </span>
+                          </div>
+                          <div className='details-description-email'>
+                            <span>
+                              <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faEnvelope} />
+                              <span style={{ color: 'black' }}>{ticket.assignedTo.email}</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {ticket.status && ticket.status === "resolved" && (ticket.assignedTo !== null &&
+                    <div className='row details'>
+                      <div className='details-heading col-lg-3 col-md-3 col-sm-12'>
+                        <p>Assigned To :</p>
+                      </div>
+                      <div className='col-lg-9 col-md-9 col-sm-12'>
+                        <div className='row'>
+                          <div>
+                            <span>
+                              <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faUser} />
+                              <span style={{ textTransform: 'capitalize', color: 'black' }}>{ticket.assignedTo.name}</span>
+                            </span>
+                          </div>
+                          <div className='details-description-email'>
+                            <span>
+                              <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faEnvelope} />
+                              <span style={{ color: 'black' }}>{ticket.assignedTo.email}</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>}
+                <div className='row details'>
+                  <div className='details-heading col-lg-3 col-md-3 col-sm-12'>
+                    <p>Category :</p>
+                  </div>
+                  <div className='col-lg-9 col-md-9 col-sm-12'>
+                    <span>
+                      <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faVectorSquare} />
+                      <span style={{ textTransform: 'capitalize', color: 'black' }}>{ticket.title}</span>
+                    </span>
+                  </div>
+                </div>
+                <div className='row details'>
+                  <div className='details-heading col-lg-3 col-md-3 col-sm-12'>
+                    <p>Assigned To :</p>
+                  </div>
+                  <div className='col-lg-9 col-md-9 col-sm-12'>
+                    <span>
+                      <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faVectorSquare} />
+                      <span style={{ textTransform: 'capitalize', color: 'black' }}> {ticket.assignedTo?.name ? ticket.assignedTo.name : 'Not Assigned Yet'}</span>
+                    </span>
+                  </div>
+                </div>
+                <div className='row details'>
+                  <div className='details-heading col-lg-3 col-md-3 col-sm-12'>
+                    <p>Business Name :</p>
+                  </div>
+                  <div className='col-lg-8 col-md-8 col-sm-12'>
+                    <span>
+                      <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faBuilding} />
+                      {
+                        user.role !== 'client' && ((ticket.raisedBy.businessName !== null && ticket.raisedBy.businessName.length !== 0) ? ticket.raisedBy.businessName : <span style={{ borderBottom: '2px solid #D81F84', paddingBottom: '1px' }}>Not Added Yet</span>)
+                      }
+                      {
+                        user.role === 'client' && ((user.businessName !== null && user.businessName.length !== 0) ? <span style={{ color: 'black' }}>{user.businessName}</span> : <span style={{ borderBottom: '2px solid #D81F84', paddingBottom: '1px' }}>Not Added Yet</span>)
+                      }
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='date-details'>
+              <div className='details-heading'>Raised on :</div>
+              <span>
+                <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faCalendarAlt} />
+                <span style={{ textTransform: 'capitalize', color: 'black' }}>{formatDate_dd_mm_yyyy(ticket.dateRaised)}</span>
+              </span>
+              <br /><br />
+              {ticket.status === "resolved" && <>
+                <div className='details-heading'>Resolved on :</div>
+                <span>
+                  <FontAwesomeIcon className='details-description-icon detail-icons' size="lg" icon={faCalendarAlt} />
+                  <span style={{ textTransform: 'capitalize', color: 'black' }}>{formatDate_dd_mm_yyyy(ticket.dateResolved)}</span>
+                </span>
+              </>}
+            </div>
+          </div>
+          <div style={{ margin: '10px 20px' }}>
+            <Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header className='accordion-heading-text'>Ticket Description</Accordion.Header>
+                <Accordion.Body className='accordion-text'>
+                  {ticket.message}
+                </Accordion.Body>
+              </Accordion.Item>
+              {
+                user.role === "client" && (
+                  <Accordion.Item eventKey="1">
+                    <Accordion.Header className='accordion-heading-text'>Reference Comment</Accordion.Header>
+                    <Accordion.Body className='accordion-text'>
+                      {ticket.referenceComment === null ? 'Reference comment has not been added' : ticket.referenceComment}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                )
+              }
+              {
+                user.role !== "client" && (
+                  <Accordion.Item eventKey="1">
+                    <Accordion.Header className='accordion-heading-text'>Reference Comment</Accordion.Header>
+                    <Accordion.Body className='accordion-text'>
+                      {
+                        user.role !== "client" && (
+                          ticket.status === "pending" && (
+                            ticket.referenceComment === null || ticket.referenceComment === ''
+                              ? <p>No reference comment has been added yet</p>
+                              : (
+                                <div>
+                                  <p>{ticket.referenceComment}</p>
+                                </div>
+                              )
+                          )
+                        )
+                      }
+                      {
+                        user.role !== "client" && (ticket.status === 'inreview') && (
+                          //add input reference comment here 
+                          <div>
+                            <textarea
+                              type="text"
+                              value={(ticket.referenceComment === null || ticket.referenceComment === '') ? referenceComment : editComment}
+                              className='text-area'
+                              onChange={(ticket.referenceComment === null || ticket.referenceComment === '') ? (e) => setReferenceComment(e.target.value) : (e) => setEditComment(e.target.value)}
+                              placeholder={`${(ticket.referenceComment === null || ticket.referenceComment === '') ? `No reference comment has been added yet` : ticket.referenceComment}`}
+                              rows={10}
+                              cols={50}
+                              required
+                            />
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <div></div>
+                              {
+                                (ticket.referenceComment === '' || ticket.referenceComment === null) ? <button className='submit-comment-button' onClick={submitReferenceComment}>Submit Comment</button> : <button className='edit-comment-button' onClick={editReferenceComment}>Update Comment</button>
+                              }
+                            </div>
+                          </div>
+                        )
+                      }
+                      {
+                        user.role !== "client" && (ticket.status === 'resolved') && (
+                          //add input reference comment here 
+                          <div>
+                            <textarea
+                              type="text"
+                              // value={referenceComment}
+                              value={(ticket.referenceComment === null || ticket.referenceComment === '') ? referenceComment : editComment}
+                              className='text-area'
+                              onChange={(ticket.referenceComment === null || ticket.referenceComment === '') ? (e) => setReferenceComment(e.target.value) : (e) => setEditComment(e.target.value)}
+                              placeholder={`${(ticket.referenceComment === null || ticket.referenceComment === '') ? `No reference comment has been added yet` : ticket.referenceComment}`}
+                              rows={10}
+                              cols={50}
+                              required
+                            />
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <div></div>
+                              {
+                                (ticket.referenceComment === '' || ticket.referenceComment === null) ? <button className='submit-comment-button' onClick={submitReferenceComment}>Submit Comment</button> : <button className='edit-comment-button' onClick={editReferenceComment}>Update Comment</button>
+                              }
+                            </div>
+                          </div>
+                        )
+                      }
+                    </Accordion.Body>
+                  </Accordion.Item>
+                )
+              }
+            </Accordion>
+          </div>
+
+          <div className='mark-buttons-container'>
+            {isAuthenticated && user.ticketResolved && ticket.status === "pending" && (
+              <div className='margin adjust-mark-buttons'>
+                <div className='ticket-status'>
+                  <span>
+                    <FontAwesomeIcon className='details-description-icon' size="lg" icon={faStopwatch} />
+                    <span style={{ textTransform: 'uppercase', fontWeight: '600', color: 'black' }}>{ticket.status}</span>
+                  </span>
+                </div>
+                <div className="status-buttons">
+                  <button className='mark-button' onClick={() => updateStatus("inreview")}>Mark as Inreview</button>
+                </div>
+              </div>
+            )
+            }
+            {isAuthenticated && user.ticketResolved && ticket.status === "inreview" && (
+              <div className='margin adjust-mark-buttons'>
+                <div className='ticket-status'>
+                  <span>
+                    <FontAwesomeIcon className='details-description-icon' size="lg" icon={faStopwatch} />
+                    <span style={{ textTransform: 'uppercase', fontWeight: '600', color: 'black' }}>{ticket.status}</span>
+                  </span>
+                </div>
+                <div className="status-buttons">
+                  <button className='mark-button' style={{ margin: '0 10px' }} onClick={() => updateStatus("pending")}>Mark in Pending</button>
+                  <button className="mark-button" onClick={() => updateStatus("resolved")}>Mark as Resolved</button>
+                </div>
+              </div>
+            )
+            }
+            {isAuthenticated && user.ticketResolved && ticket.status === "resolved" && (
+              <div className='margin adjust-mark-buttons'>
+                <div className='ticket-status'>
+                  <span>
+                    <FontAwesomeIcon className='details-description-icon' size="lg" icon={faStopwatch} />
+                    <span style={{ textTransform: 'uppercase', fontWeight: '600', color: 'black' }}>{ticket.status}</span>
+                  </span>
+                </div>
+                <div className="status-buttons">
+                  <button className="mark-button" style={{ margin: '0 10px' }} onClick={() => updateStatus("pending")}>Mark as Pending</button>
+                  <button className="mark-button" onClick={() => updateStatus("inreview")}>Mark as Inreview</button>
+                </div>
+              </div>
+            )
+            }
+          </div>
+        </div>
+      </div>
     </>
   );
 }

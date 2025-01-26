@@ -12,7 +12,7 @@ import {
   updateReferenceComment,
   editReferenceComment,
   downloadAllAdminTickets,
-  deleteTicket
+  deleteTicket,
 } from "../controllers/tickets";
 
 const ticketRouter = Router();
@@ -45,6 +45,5 @@ ticketRouter.put("/reference-comment", updateReferenceComment)
 ticketRouter.patch("/edit-comment", editReferenceComment)
 
 ticketRouter.patch('/delete/:ticketID', deleteTicket);
-
 
 export default ticketRouter;
