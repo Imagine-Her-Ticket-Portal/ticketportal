@@ -37,6 +37,10 @@ const TicketSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  authorName: {
+    type: String,
+    default: null
+  },
   location: {
     type: String,
     required: true,

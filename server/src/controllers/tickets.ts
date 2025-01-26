@@ -196,21 +196,22 @@ export const updateReferenceComment = async (req: Request, res: Response) => {
     return res.status(403).json({ message: "Unauthorized" });
   }
 
-  const ticket: { id: string; referenceComment: string } = req.body.ticket;
+  const ticket: { id: string; referenceComment: string, authorName: string } = req.body.ticket;
 
   try {
     const updatedTicket = await Tickets.findByIdAndUpdate(
       ticket.id,
       {
         $set: {
-          referenceComment: ticket.referenceComment
+          referenceComment: ticket.referenceComment,
+          authorName: user.name,
         }
       },
       { new: true }
     );
     //console.log("updated ticket: ", updatedTicket)
 
-    res.status(200).json({ message: "Reference Comment has been successfully added" });
+    res.status(200).json({ message: "Reference Comment has been successfully added", ticket: updatedTicket, authorName: user.name });
   } catch (err) {
     res
       .status(500)
@@ -226,14 +227,15 @@ export const editReferenceComment = async (req: Request, res: Response) => {
     return res.status(403).json({ message: "Unauthorized" });
   }
 
-  const ticket: { id: string; referenceComment: string } = req.body.ticket;
+  const ticket: { id: string; referenceComment: string, authorName: string } = req.body.ticket;
 
   try {
     const updatedTicket = await Tickets.findByIdAndUpdate(
       ticket.id,
       {
         $set: {
-          referenceComment: ticket.referenceComment
+          referenceComment: ticket.referenceComment, 
+          authorName: user.name
         }
       },
       { new: true }
@@ -245,7 +247,8 @@ export const editReferenceComment = async (req: Request, res: Response) => {
 
     res.status(200).json({
       message: "Reference Comment has been successfully modified",
-      ticket: updatedTicket
+      ticket: updatedTicket,
+      authorName: user.name
     });
   } catch (err) {
     res
