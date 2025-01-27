@@ -15,9 +15,9 @@ function TicketSummary() {
   
   const [selectedStatus, setSelectedStatus] = useState(initialStatus);
 
-  useEffect(() => {
-    user.role === "client" && window.location.reload()
-  }, [])
+  // useEffect(() => {
+  //   user.role === "client" && window.location.reload()
+  // }, [])
 
   let filteredTickets = [];
   //if the user is client
@@ -83,33 +83,3 @@ const navigateToTicketHisitory = () =>{
 }
 
 export default TicketSummary;
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from "react";
-// import { useTicket } from "../../context/TicketContext";
-
-// function TicketSummary() {
-//   const { ticketCounts } = useTicket(); // Access ticket counts
-
-//   return (
-//     <div>
-//       <h2>Ticket Summary</h2>
-//       <p>Pending: {ticketCounts.pending}</p>
-//       <p>In Review: {ticketCounts.inReview}</p>
-//       <p>Resolved: {ticketCounts.resolved}</p>
-//     </div>
-//   );
-// }
-
-// export default TicketSummary;

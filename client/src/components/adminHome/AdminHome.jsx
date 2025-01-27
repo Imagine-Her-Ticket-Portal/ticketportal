@@ -136,10 +136,10 @@ const AdminHome = () => {
         setSelectedTicket(null);
     };
 
-    const handleReferenceCommentChange = (ticketId, newComment) => {
+    const handleReferenceCommentChange = (ticketId, newComment, newAuthorName) => {
         setRecentTickets(prevTickets =>
             prevTickets.map(ticket =>
-                ticket._id === ticketId ? { ...ticket, referenceComment: newComment } : ticket
+                ticket._id === ticketId ? { ...ticket, referenceComment: newComment, authorName: newAuthorName } : ticket
             )
         );
         setSelectedTicket(null);

@@ -2,7 +2,7 @@
 import ModalBox from '../ModalBox/ModalBox.tsx'
 import useModalToggle from '../ModalBox/useModalToggle.tsx'
 import styled from "styled-components";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useModal } from "../../modalProvider/Modalprovider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faAddressCard, faEnvelope, faCircleXmark, faUser, faU, faVectorSquare, faCalendarAlt, faStopwatch, faBuilding, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -50,6 +50,8 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
   const prevStatus = ticket.status
   const [referenceComment, setReferenceComment] = useState('')
   const [editComment, setEditComment] = useState('')
+  const [authorName, setAuthorName] = useState('')
+  const [updatedTempComment, setUpdatedTempComment] = useState({})
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [assignedTo, setAssignedTo] = useState(null)
   const [raisedBy, setRaisedBy] = useState('')
@@ -125,7 +127,7 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
     if (referenceComment.length < 3) {
       alert('Reference Comment must have atleast 3 characters')
       // toast("Reference comment must have atleast 3 characters")
-      return
+      return;
     }
     try {
       const response = await fetch(
@@ -139,18 +141,21 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
           body: JSON.stringify({
             ticket: {
               id: ticket._id,
-              referenceComment: referenceComment
+              referenceComment: referenceComment,
+              authorName: authorName
             }
           })
         }
       );
       const data = await response.json();
-      const commentChange = async (ticket, referenceComment) => {
-        onReferenceCommentChange(ticket._id, referenceComment);
+      const commentChange = async (ticket, referenceComment, authorName) => {
+        onReferenceCommentChange(ticket._id, referenceComment, authorName);
       }
-
+    
       if (response.ok) {
-        await commentChange(ticket, referenceComment)
+        await commentChange(ticket, referenceComment, data.ticket.authorName)
+        setAuthorName(authorName)
+        setUpdatedTempComment(data.ticket)
         alert(data.message);
         // toast.success(data.message)
         closeModal()
@@ -159,6 +164,7 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
         throw new Error(`Failed to submit reference comment: ${errorData.message}`);
       }
       setReferenceComment('')
+      //setAuthorName('')
     } catch (err) {
       console.error("Error submitting reference comment:", err);
     }
@@ -178,7 +184,8 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
           body: JSON.stringify({
             ticket: {
               id: ticket._id,
-              referenceComment: editComment
+              referenceComment: editComment,
+              authorName: authorName
             }
           })
         }
@@ -188,6 +195,7 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
       if (response.ok) {
         setEditComment(editComment)
         setReferenceComment(editComment)
+        setUpdatedTempComment(data.ticket)
         alert(data.message);
         // toast.success(data.message)
         closeModal()
@@ -198,6 +206,10 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
       console.error("Error submitting reference comment:", err);
     }
   };
+
+  useEffect(()=>{
+    setAuthorName(authorName)
+  },[authorName])
 
   const deleteTicket = async () => {
     const authToken = localStorage.getItem("authorization");
@@ -433,7 +445,9 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
                               ? <p>No reference comment has been added yet</p>
                               : (
                                 <div>
-                                  <p>{ticket.referenceComment}</p>
+                                  {
+                                    ticket.referenceComment && ticket.authorName!=="" && `${ticket.referenceComment} - ${ticket.authorName}`
+                                  }
                                 </div>
                               )
                           )
@@ -453,11 +467,17 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
                               cols={50}
                               required
                             />
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <div></div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row-reverse' }}>
+                              <div>
                               {
-                                (ticket.referenceComment === '' || ticket.referenceComment === null) ? <button className='submit-comment-button' onClick={submitReferenceComment}>Submit Comment</button> : <button className='edit-comment-button' onClick={editReferenceComment}>Update Comment</button>
+                                (ticket.referenceComment === '' || ticket.referenceComment === null) 
+                                ? <button className='submit-comment-button' onClick={submitReferenceComment}>Submit Comment</button> 
+                                : <button className='edit-comment-button' onClick={editReferenceComment}>Update Comment</button>
                               }
+                              </div>
+                              <div>
+                              <p>Comment Added By : {(updatedTempComment.authorName && updatedTempComment.authorName.length>1 ) ? updatedTempComment.authorName : ticket.authorName}</p>
+                              </div>
                             </div>
                           </div>
                         )
@@ -477,11 +497,17 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
                               cols={50}
                               required
                             />
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <div></div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection:'row-reverse' }}>
+                              <div>
                               {
-                                (ticket.referenceComment === '' || ticket.referenceComment === null) ? <button className='submit-comment-button' onClick={submitReferenceComment}>Submit Comment</button> : <button className='edit-comment-button' onClick={editReferenceComment}>Update Comment</button>
+                                (ticket.referenceComment === '' || ticket.referenceComment === null) 
+                                ? <button className='submit-comment-button' onClick={submitReferenceComment}>Submit Comment</button> 
+                                : <button className='edit-comment-button' onClick={editReferenceComment}>Update Comment</button>
                               }
+                              </div>
+                              <div>
+                              <p>Comment Added By : {(updatedTempComment.authorName && updatedTempComment.authorName.length>1 ) ? updatedTempComment.authorName : ticket.authorName}</p>
+                              </div>
                             </div>
                           </div>
                         )
