@@ -36,9 +36,9 @@
     justify-content: space-around;
 }
 
-.resolved-message-box {
-    /* margin: 10px; */
-}
+/* .resolved-message-box {
+    margin: 10px;
+} */
 
 .message-box {
     background-color: #f2f2f2;
@@ -364,4 +364,59 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+
+
+
+
+/* Sliding Sheet */
+.sheet {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 650px;
+    height: 100%;
+    background-color: #ffffff; 
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-x: hidden; 
+  }
+  
+  .sheet.open {
+    right: 0;
+  }
+  
+  .sheet-content {
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    /* Adjust for tablets */
+    .sheet {
+      width: 80%; 
+    }
+  
+    .sheet-content {
+      padding: 15px;
+    }
+
+  }
+  
+  @media (max-width: 480px) {
+    /* Adjust for mobiles */
+    .sheet {
+      width: 100%; /* Full-width on small screens */
+    }
+
 }

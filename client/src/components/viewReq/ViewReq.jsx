@@ -249,16 +249,10 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
         <div className="view-button">View</div>
       </div>
 
-      <ModalBox
-        isOpen={isOpen}
-        toggle={toggle}
-        closeModal={closeModal}
-        onRequestClose={closeModal}
-        className='modal-overlay'
-        contentLabel="View Req Modal"
-        ariaHideApp={false}
-      >
-        <ModalContent ref={modalRef}>
+
+      <div className={`sheet ${isOpen ? "open" : ""}`} onClick={closeModal}>
+        <div className="sheet-content" onClick={(e) => e.stopPropagation()}>
+          
           <div>
             <div className='row ticket-popup-icons'>
               <div className='col delete-icon col-sm-6'><FontAwesomeIcon onClick={deleteTicket} icon={faTrash} /></div>
@@ -560,13 +554,13 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
                 <div className="status-buttons">
                   <button className="mark-button" style={{ margin: '0 10px' }} onClick={() => updateStatus("pending")}>Mark as Pending</button>
                   <button className="mark-button" onClick={() => updateStatus("inreview")}>Mark as Inreview</button>
-                </div>
+                  </div>
               </div>
             )
             }
           </div>
-        </ModalContent>
-      </ModalBox>
+        </div>
+      </div>
     </>
   );
 }
