@@ -36,7 +36,7 @@ function NavBar() {
   };
 
   const handleClickStories = () => {
-    window.open("https://imagineher.org/our-impact", "_blank");
+    window.open("https://imagineher.netlify.app/our-impact", "_blank");
   };
 
   const handleClickHome = () => {
