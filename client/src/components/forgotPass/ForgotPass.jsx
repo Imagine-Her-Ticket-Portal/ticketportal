@@ -34,7 +34,7 @@ export default function ForgotPass() {
 
         localStorage.setItem("authorization", `Bearer ${data.authToken}`);
       } else {
-        console.err(`Failed to send OTP: ${data.message}`);
+        console.error(`Failed to send OTP: ${data.message}`);
       }
     } catch (err) {
       console.error('Error sending OTP:', err);
