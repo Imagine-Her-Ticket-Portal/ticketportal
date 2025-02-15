@@ -7,6 +7,9 @@ import Admins from "../models/Admins";
 import { otpInputSchema } from "../validation/otpValidation";
 import bcrypt from "bcrypt";
 
+console.log("Email:", process.env.NODEMAILER_USER_EMAIL)
+console.log("password:", process.env.NODEMAILER_APP_PASSWORD)
+
 export const handleForgotPassword = async (req: Request, res: Response) => {
   const isValidEmail = validateEmail.safeParse(req.body);
 
@@ -50,9 +53,7 @@ export const handleForgotPassword = async (req: Request, res: Response) => {
       .status(200)
       .json({ message: "successfully send new OTP", authToken: token });
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Internal server error on forgot password" });
+    res.status(500).json({ message: "Internal server error on forgot password", error:err });
     console.log(err);
   }
 };
