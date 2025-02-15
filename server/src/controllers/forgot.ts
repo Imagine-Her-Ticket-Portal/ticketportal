@@ -7,9 +7,6 @@ import Admins from "../models/Admins";
 import { otpInputSchema } from "../validation/otpValidation";
 import bcrypt from "bcrypt";
 
-console.log("Email:", process.env.NODEMAILER_USER_EMAIL)
-console.log("password:", process.env.NODEMAILER_APP_PASSWORD)
-
 export const handleForgotPassword = async (req: Request, res: Response) => {
   const isValidEmail = validateEmail.safeParse(req.body);
 
