@@ -154,7 +154,8 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
     
       if (response.ok) {
         await commentChange(ticket, referenceComment, data.ticket.authorName)
-        setAuthorName(authorName)
+        setAuthorName(user.name)
+        //setAuthorName(authorName)
         setUpdatedTempComment(data.ticket)
         alert(data.message);
         // toast.success(data.message)
@@ -422,7 +423,7 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
                   <Accordion.Item eventKey="1">
                     <Accordion.Header className='accordion-heading-text'>Reference Comment</Accordion.Header>
                     <Accordion.Body className='accordion-text'>
-                      {ticket.referenceComment === null ? 'Reference comment has not been added' : ticket.referenceComment}
+                      {ticket.referenceComment === null ? 'Reference comment has not been added' : (`${ticket.referenceComment} - ${ticket.authorName}`)}
                     </Accordion.Body>
                   </Accordion.Item>
                 )
@@ -440,7 +441,7 @@ export default function ViewReq({ ticket, onClose, onStatusChange, onReferenceCo
                               : (
                                 <div>
                                   {
-                                    ticket.referenceComment && ticket.authorName!=="" && `${ticket.referenceComment} - ${ticket.authorName}`
+                                    ticket.referenceComment && ticket.authorName!=="" && (`${ticket.referenceComment} - ${ticket.authorName}`)
                                   }
                                 </div>
                               )
