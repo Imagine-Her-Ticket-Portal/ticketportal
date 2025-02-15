@@ -50,9 +50,7 @@ export const handleForgotPassword = async (req: Request, res: Response) => {
       .status(200)
       .json({ message: "successfully send new OTP", authToken: token });
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Internal server error on forgot password" });
+    res.status(500).json({ message: "Internal server error on forgot password", error:err });
     console.log(err);
   }
 };
