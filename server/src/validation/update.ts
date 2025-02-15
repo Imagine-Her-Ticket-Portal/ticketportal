@@ -16,4 +16,5 @@ export const updateDetail = z.object({
     .max(40, "Location can't exceed 40 characters"),
   businessName: z
     .string()
+    .min(0, "Invalid entity for Admins")
 });

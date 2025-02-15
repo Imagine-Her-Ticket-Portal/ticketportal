@@ -93,7 +93,8 @@ export default function AdminProfile() {
                     body: JSON.stringify({
                         name: userName,
                         email: userEmail,
-                        location: userLocation
+                        location: userLocation,
+                        businessName: ""
                     }),
                 }
             );
@@ -203,7 +204,7 @@ export default function AdminProfile() {
                                     </div>
                                     <div className="name">
                                         <div className="title">Email</div>
-                                        <input
+                                        <input readOnly
                                             className="name-box"
                                             placeholder={user.email}
                                             type="email"

@@ -41,12 +41,7 @@ AuthRouter.post("/refresh-token", async (req, res) => {
 
 AuthRouter.get("/me", authenticateJWT, getUser);
 
-AuthRouter.post(
-  "/profile-update",
-  authenticateJWT,
-  validateStats,
-  updateProfile
-);
+AuthRouter.post("/profile-update", authenticateJWT, validateStats, updateProfile);
 
 // Soft delete a user
 AuthRouter.patch('/user/:id/soft-delete', softDeleteUser);
