@@ -13,7 +13,7 @@ const AdminServices = () => {
             <div className='boxes'>
                 <div className='box'><Box ticketName='GET HELP' link="/admin/get-help" image={GetHelp} /></div>
                 <div className='box'><Box ticketName='BUSINESS UPDATES' link="/admin/business-updates" image={Business} /></div>
-                <div className='box'><Box ticketName='RESOURCES' link="https://imagineher.org/programs/social-enterprise-innovation-program" image={Resources} /></div>
+                <div className='box'><Box ticketName='RESOURCES' link="https://imagineher.netlify.app/our-work" image={Resources} /></div>
             </div>
         </section>
     )

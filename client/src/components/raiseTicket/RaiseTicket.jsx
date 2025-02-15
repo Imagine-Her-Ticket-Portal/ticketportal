@@ -16,7 +16,7 @@ export default function RaiseTicket() {
         <div className='ticket-box'>
             <Box ticketName='GET HELP' link="/get-help" image={GetHelp}/>
             <Box ticketName='BUSINESS UPDATES' link="/business-updates" image={Business}/>
-            <Box ticketName='RESOURCES' link="https://imagineher.org/programs/social-enterprise-innovation-program" image={Resources}/>
+            <Box ticketName='RESOURCES' link="https://imagineher.netlify.app/our-work" image={Resources}/>
         </div>
     </section>
   )
