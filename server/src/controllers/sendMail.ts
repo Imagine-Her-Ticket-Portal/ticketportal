@@ -7,7 +7,7 @@ type MailPromise = Promise<boolean | Error>;
 export const sendMail = async (email: string, OTP: number): MailPromise => {
 
   
-const logoPath = path.join(__dirname, "../assets/logo-new.jpg");
+const logoPath = path.resolve(__dirname, "..", "assets", "logo-new.jpg");
 const logoBase64 = fs.readFileSync(logoPath, { encoding: "base64" });
 
   const mailTransporter = nodemailer.createTransport({
@@ -62,7 +62,7 @@ export const TicketUpdateMail = async (status: string, email: string,
   assignedToEmail: string, assignedToName: string): MailPromise => {
 
       
-const logoPath = path.join(__dirname, "../assets/logo-new.jpg");
+const logoPath = path.resolve(__dirname, "..", "assets", "logo-new.jpg");
 const logoBase64 = fs.readFileSync(logoPath, { encoding: "base64" });
 
 
