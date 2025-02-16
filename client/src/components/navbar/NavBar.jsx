@@ -12,7 +12,7 @@ import SignUp from "../signUp/SignUp";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import newlogo from "../../assets/logo-new.jpg"
+import newlogo from "../../assets/Imagine-Her-Logo-New.png"
 
 function NavBar() {
   const {
