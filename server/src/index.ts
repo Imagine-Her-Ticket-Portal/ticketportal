@@ -23,10 +23,10 @@ app.use(cors({
 app.options('*', cors());
 
 app.use(express.json());
-app.use("/api/auth", AuthRouter);
-app.use("/api/otp", authenticateJWT, validateStats, otpRouter);
-app.use("/api/ticket", authenticateJWT, validateStats, ticketRouter);
-app.use("/api/query", queryRouter);
+app.use("/auth", AuthRouter);
+app.use("/otp", authenticateJWT, validateStats, otpRouter);
+app.use("/ticket", authenticateJWT, validateStats, ticketRouter);
+app.use("/query", queryRouter);
 
 app.get("/health-check", (req, res) => {
   res.status(200).json({ message: "Yeah, I'm Alive!!" });
